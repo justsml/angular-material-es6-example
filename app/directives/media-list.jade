@@ -1,0 +1,11 @@
+table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable
+  thead
+    tr
+      th.mdl-data-table__cell--non-numeric Title
+      th Artist
+      th Album
+  tbody
+    tr(ng-repeat='item in results')
+      td.mdl-data-table__cell--non-numeric {{ item.title }}
+      td {{ item.artist }}
+      td {{ item.album }}

@@ -1,0 +1,15 @@
+header.demo-drawer-header
+  img.demo-avatar(src="images/playlist.jpg")
+  .demo-avatar-dropdown
+    span
+      | Playing
+      em {{ currentPlaylist.title }}
+    .mdl-layout-spacer
+    button#accbtn.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon
+      i.material-icons(role="presentation") arrow_drop_down
+      span.visuallyhidden Playlists
+    ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for="accbtn")
+      li.mdl-menu__item(ng-repeat='playlist in playlists') {{ playlist.title }}
+      li.mdl-menu__item(ng-click='add()')
+        i.material-icons add
+        | Add playlist...
