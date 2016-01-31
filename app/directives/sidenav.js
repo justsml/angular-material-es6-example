@@ -6,8 +6,9 @@ function SideNav($document) {
     restrict:   'E',
     scope:      {},
     link: (scope, el, attrs) => {
-      // do nothing
-
+      scope.createMedia = () => {
+        scope.$root.$broadcast('media.open', {});
+      }
     }
   }
 }

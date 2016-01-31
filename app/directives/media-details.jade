@@ -1,6 +1,9 @@
-md-content(layout-padding)
-  div
-    form(name='userForm')
+md-dialog(flex='80', aria-label='{{ title }}')
+  form(name='frm')
+    md-toolbar
+      .md-toolbar-tools
+        h2 {{ title }}
+    md-dialog-content(layout-padding='20')
       div(layout-gt-sm='row')
         md-input-container.md-block(flex-gt-sm)
           label Title
@@ -19,9 +22,12 @@ md-content(layout-padding)
         md-input-container.md-block(flex-gt-sm)
           label Media URL:
           input(type='text', name='mediaUrl', ng-model='media.mediaUrl', placeholder='mp3/ogg path', required, ng-pattern='/\.(mp3|ogg)$/', md-minlength='9')
-          div(ng-messages='userForm.mediaUrl.$error', role='alert', multiple)
+          div(ng-messages='frm.mediaUrl.$error', role='alert', multiple)
             .my-message(ng-message='required') You must supply a url.
             .my-message(ng-message='pattern')
               | That doesn't look like a valid url
             .my-message(ng-message='md-minlength')
               | Only .MP3 &amp; .OGG files supported
+    md-dialog-actions()
+      md-button.md-raised.md-primary(ng-click='save(media)') Save
+      md-button.md-raised.md-warning(ng-click='closeDialog()') Close

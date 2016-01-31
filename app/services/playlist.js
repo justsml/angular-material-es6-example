@@ -1,24 +1,21 @@
 import config from '../../config';
 
-class PlaylistService {
-
-  /*@ngInject*/
-  constructor($resource) {
-    this.$resource = $resource;
-    this.Media = $resource(this.config.apiServerUrl+'media/:id', {id:'@id'}, { create: { method: 'PUT' } });
+/*@ngInject*/
+function PlaylistService($resource) {
+  var Playlist = $resource(config.apiServerUrl+'playlist/:id', {id:'@id'}, { create: { method: 'PUT' } });
+  return {
+    get: (id = '') => { return Playlist.get({id}).$promise },
+    remove: (id = '') => { return Playlist.remove({id}).$promise },
+    query: ({title}) => {
+      return Playlist.query({title}).$promise
+    },
+    create: ({title, tracks}) => {
+      return Playlist.create({title, tracks}).$promise
+    },
+    save: ({id, title, tracks}) => {
+      return Playlist.save({id, title, tracks}).$promise
+    },
   }
-  get(id = '') {    return this.Media.$get({id}).$promise }
-  remove(id = '') { return this.Media.$remove({id}).$promise }
-  query({title, album, artist, mediaUrl, sourceUrl, imageUrl}) {
-    return this.Media.$query({title, album, artist, mediaUrl, sourceUrl, imageUrl}).$promise
-  }
-  create({title, album, artist, mediaUrl, sourceUrl, imageUrl}) {
-    return this.Media.$create({title, album, artist, mediaUrl, sourceUrl, imageUrl}).$promise
-  }
-  save({id, title, album, artist, mediaUrl, sourceUrl, imageUrl}) {
-    return this.Media.$save({id, title, album, artist, mediaUrl, sourceUrl, imageUrl}).$promise
-  }
-
 }
 
 export { PlaylistService as default }
