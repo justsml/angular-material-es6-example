@@ -4,8 +4,10 @@ export default function ({gulp, plugins, config}) {
     let file = 'index.js';
     let bundler = plugins.browserify({
       entries:      config.build.es6Src,
-      external:     ['angular', 'jquery'],
-      noparse:      ['angular', 'lodash', 'jquery'],
+      ignore:       [ 'angular', 'moment', 'jquery', 'lodash' ],
+      external:     [ 'angular', 'moment', 'jquery', 'lodash' ],
+      exclude:      [ 'angular', 'moment', 'jquery', 'lodash' ],
+      noParse:      [ 'angular', 'moment', 'jquery', 'lodash' ],
       debug:        config.debug,
       cache:        {},
       packageCache: {},
@@ -38,7 +40,13 @@ export default function ({gulp, plugins, config}) {
     }
     function applyTransforms() {
       const transforms = [
-        { 'name': 'babelify',              'options': { "presets": ["es2015", "stage-0", "react"] }},
+        { 'name': 'babelify',
+          'options': {
+            'ignore': /node_modules/,
+            'sourceMaps': true,
+            'presets': ["es2015", "stage-0", "react"]
+          }
+        },
         { 'name': 'jadeify',               'options': {} },
         { 'name': 'browserify-ngannotate', 'options': {} },
       ];
