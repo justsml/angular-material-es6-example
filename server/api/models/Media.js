@@ -15,7 +15,7 @@ module.exports = {
 
     album : { type: 'string' },
 
-    image : { type: 'string' },
+    imageUrl : { type: 'string' },
 
     audioUrl : { type: 'string' },
 

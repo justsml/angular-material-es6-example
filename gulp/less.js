@@ -1,6 +1,5 @@
-import gulp from 'gulp';
 
-export default function ({plugins, config}) {
+export default function ({gulp, plugins, config}) {
   return () => {
     return gulp.src(config.build.lessSrc)
     .on('error', plugins.util.log)

@@ -1,14 +1,22 @@
 import template from './media-list.jade';
 
-export class MediaList {
-  constructor($document) {
+class MediaList {
+  /*@ngInject*/
+  constructor($document, mediaService) {
     this.template = template;
     this.restrict = 'E';
     this.scope = {}
+    this.mediaService = mediaService;
     this.$document = $document;
+    this.load();
   }
 
-  move () {
-    console.log(this.name + ' is spinning wheels...')
+  link(scope, el, attrs) {
+    this.mediaService.query(scope.filters)
+    .$then(data => scope.results = data)
   }
+
 }
+
+export { MediaList as default }
+

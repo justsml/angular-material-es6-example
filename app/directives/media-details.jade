@@ -1,0 +1,27 @@
+md-content(layout-padding)
+  div
+    form(name='userForm')
+      div(layout-gt-sm='row')
+        md-input-container.md-block(flex-gt-sm)
+          label Title
+          input(type='text', ng-model='media.title')
+        md-input-container.md-block(flex-gt-sm)
+          label Album
+          input(type='text', ng-model='media.album')
+      div(layout-gt-sm='row')
+        md-input-container.md-block(flex-gt-sm)
+          label Artist
+          input(type='text', ng-model='media.artist')
+        md-input-container.md-block(flex-gt-sm)
+          label Source URL
+          input(type='text', ng-model='media.sourceUrl')
+      div(layout-gt-sm='row')
+        md-input-container.md-block(flex-gt-sm)
+          label Media URL:
+          input(type='text', name='mediaUrl', ng-model='media.mediaUrl', placeholder='mp3/ogg path', required, ng-pattern='/\.(mp3|ogg)$/', md-minlength='9')
+          div(ng-messages='userForm.mediaUrl.$error', role='alert', multiple)
+            .my-message(ng-message='required') You must supply a url.
+            .my-message(ng-message='pattern')
+              | That doesn't look like a valid url
+            .my-message(ng-message='md-minlength')
+              | Only .MP3 &amp; .OGG files supported

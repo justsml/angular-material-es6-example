@@ -1,11 +1,13 @@
-import gulp from 'gulp';
 
-export default function ({plugins, config}) {
+export default function ({gulp, plugins, config}) {
+  config.watch = true;
   return (done) => {
-    gulp.watch(config.build.lessSrc, ['less']);
-    gulp.watch(config.build.jadeSrc, ['jade']);
-    gulp.watch(conf.vendor.src, ['vendor']);
-    gulp.watch('./client/js/**/*.js', ['angular']);
+    let vendorfiles = config.build.vendorSrc.concat(['./config/*.js'])
+
+    gulp.watch(config.build.lessSrc,   ['less']);
+    gulp.watch(config.build.jadeSrc,   ['jade']);
+    gulp.watch(vendorfiles,            ['vendor']);
+    gulp.watch('./app/**/*.js',        ['es6']);
     done();
   }
 }

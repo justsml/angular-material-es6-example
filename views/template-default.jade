@@ -1,62 +1,20 @@
-//- Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-  https://www.apache.org/licenses/LICENSE-2.0
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
 doctype
-html(lang="en")
+html(lang='en', ng-app='app' ng-controller='AppController')
   head
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
-    meta(name="description", content="A front-end template that helps you build fast, modern mobile web apps.")
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-    title Material Design Lite
-    // Add to homescreen for Chrome on Android
-    meta(name="mobile-web-app-capable", content="yes")
-    link(rel="icon", sizes="192x192", href="images/android-desktop.png")
-    // Add to homescreen for Safari on iOS
-    meta(name="apple-mobile-web-app-capable", content="yes")
-    meta(name="apple-mobile-web-app-status-bar-style", content="black")
-    meta(name="apple-mobile-web-app-title", content="Material Design Lite")
-    link(rel="apple-touch-icon-precomposed", href="images/ios-desktop.png")
-    // Tile icon for Win8 (144x144 + tile color)
-    meta(name="msapplication-TileImage", content="images/touch/ms-touch-icon-144x144-precomposed.png")
-    meta(name="msapplication-TileColor", content="#3372DF")
-    link(rel="shortcut icon", href="images/favicon.png")
-    // link(rel="canonical" href="http://www.example.com/")
-
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.0.6/material.min.js")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
-    link(rel="stylesheet", href="/style/site.css")
-    // https://storage.googleapis.com/code.getmdl.io/1.0.1/material.blue_grey-yellow.min.css
-
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='description', content='A Music Player Demo using ES6, Angular (v1.x), Gulp, Browserify')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Music Player Demo - w/ ES6, Angular (v1.x), Gulp, Browserify
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+    link(rel='stylesheet', href='/style/site.css')
+    script(src='/js/vendor.min.js')
+    block head
   body
-    .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-drawer.mdl-layout--fixed-header
-      header.demo-header.mdl-layout__header.mdl-color--grey-100.mdl-color-text--grey-600
-        .mdl-layout__header-row
-          span.mdl-layout-title Home
-          .mdl-layout-spacer
-          .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
-            label.mdl-button.mdl-js-button.mdl-button--icon(for="search")
-              i.material-icons search
-            .mdl-textfield__expandable-holder
-              input#search.mdl-textfield__input(type="text")
-              label.mdl-textfield__label(for="search") Enter your query...
-          button#hdrbtn.mdl-button.mdl-js-button.mdl-js-ripple-effect.mdl-button--icon
-            i.material-icons more_vert
-          ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect.mdl-menu--bottom-right(for="hdrbtn")
-            li.mdl-menu__item About
-            li.mdl-menu__item Contact
-            li.mdl-menu__item Legal information
-      .demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
-        playlist-menu()
+    include header.jade
+    .demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
+      playlist-menu()
 
       include ./side-navbar.jade
       block body

@@ -11,7 +11,7 @@ module.exports = {
 
     title : { type: 'string' },
 
-    tracks : { collection: 'Track' }
+    tracks : { collection: 'Media' }
   }
 };
 
