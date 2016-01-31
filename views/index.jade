@@ -4,6 +4,11 @@ block head
   script(src='/js/index.js')
 
 block body
-  media-list
+  nav-toolbar()
+  section(layout="row", flex="")
+    sidenav()
+    md-content(flex="", layout-padding="")
+      div(layout="column", layout-fill="", layout-align="top center")
+        media-list()
 
-  media-details(media='currentMediaItem')
+    media-details(media='currentMediaItem')

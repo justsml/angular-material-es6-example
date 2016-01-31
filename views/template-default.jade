@@ -12,10 +12,6 @@ html(lang='en', ng-app='app' ng-controller='AppController')
     script(src='/js/vendor.min.js')
     block head
   body
-    include header.jade
-    .demo-drawer.mdl-layout__drawer.mdl-color--blue-grey-900.mdl-color-text--blue-grey-50
-      playlist-menu()
-
-      include ./side-navbar.jade
-      block body
-        include body-placeholder.jade
+    block body
+      include body-placeholder.jade
+    block foot

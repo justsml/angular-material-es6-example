@@ -7,7 +7,9 @@ export default function ({gulp, plugins, config}) {
     gulp.watch(config.build.lessSrc,   ['less']);
     gulp.watch(config.build.jadeSrc,   ['jade']);
     gulp.watch(vendorfiles,            ['vendor']);
-    gulp.watch('./app/**/*.js',        ['es6']);
+    gulp.watch(
+      ['./app/**/*.js', './app/**/*.jade'],
+      ['es6']);
     done();
   }
 }
