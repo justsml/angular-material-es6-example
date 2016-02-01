@@ -5,10 +5,9 @@ block head
 
 block body
   nav-toolbar()
-  section(layout="row", flex="")
+  section(layout="row", flex)
     sidenav()
-    md-content(flex="", layout-padding="")
-      div(layout="column", layout-fill="", layout-align="top center")
-        media-list()
+    md-content(flex, layout="row", layout-padding)
+      media-list(flex='90')
 
     media-details(media='currentMediaItem')

@@ -1,11 +1,12 @@
-md-content
-  md-list
-    md-subheader.md-no-sticky {{ listTitle }}
 
-    md-list-item.md-2-line(ng-repeat="item in results")
-      md-divider
-      md-icon(md-svg-icon="av:art_track", ng-class="{'md-avatar-icon': item.mediaUrl.indexOf('mp3') > -1}")
-        .md-list-item-text(ng-class="{'md-offset': $index == 2 }")
-          h3  {{ item.title }}
-          p  {{ item.artist }}
+md-list(layout-fill)
+  md-subheader.md-no-sticky {{ title }}
+  md-list-item.md-2-line(ng-repeat="item in results")
+    md-divider
+    .md-list-item-text
+      h3
+        md-icon(ng-style='{"font-size": "2em", margin: "0 .35em"}') music_video
+        | {{ item.title }}
+      p Artist: {{ item.artist }}
+      md-checkbox.md-secondary(ng-if='mode === "select"')
 

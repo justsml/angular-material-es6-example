@@ -5,10 +5,12 @@ function MediaList($document, mediaService) {
     template:   template,
     restrict:   'E',
     scope:      {
-      filters: '=?'
+      filters: '=?',
+      title:   '=?',
     },
     link: (scope, el, attrs) => {
       scope.filters = scope.filters || {};
+      scope.title = scope.title || 'Media List';
       mediaService.query(scope.filters)
       .then(data => scope.results = data)
     }

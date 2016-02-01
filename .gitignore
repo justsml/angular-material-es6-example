@@ -4,3 +4,5 @@ node_modules
 *.tmp
 *.log
 assets/media/*
+typings/*
+!typings/tsd.d.ts
