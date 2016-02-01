@@ -1,7 +1,8 @@
 md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id="left", md-is-locked-open="$mdMedia('gt-md')")
-  md-toolbar.md-theme-indigo
-    h1.md-toolbar-tools Sidenav Left
-  md-content(layout-padding)
+  md-toolbar.md-accent
+    .md-toolbar-tools
+      h1 Playlists
+  md-content()
     // md-button.md-primary(ng-click="close()", hide-gt-md)
     //   | Close Sidenav Left
     md-button.md-primary(ng-click="createMedia()") New Song

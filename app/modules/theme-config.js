@@ -4,8 +4,8 @@ themeConfig.$inject = ['$mdThemingProvider'];
 
 function themeConfig($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('indigo')
-    .accentPalette('grey')
+    .primaryPalette('blue-grey')
+    .accentPalette('blue')
     .warnPalette('red');
 }
 

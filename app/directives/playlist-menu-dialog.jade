@@ -1,0 +1,17 @@
+md-dialog(flex='80', aria-label='Create a Playlist')
+  form(name='playlistFrm')
+    md-toolbar
+      .md-toolbar-tools
+        h2 Create a Playlist
+    md-dialog-content(layout-padding)
+      div(layout='row')
+        md-input-container.md-block(flex)
+          label Title
+          input(type='text', name='title', ng-model='playlist.title', ng-required, ng-minlength='3')
+          div(ng-messages='playlistFrm.title.$error', role='alert', multiple)
+            .my-message(ng-message='required') You must supply a title.
+            .my-message(ng-message='md-minlength')
+              | Please enter a Playlist title
+    md-dialog-actions()
+      md-button.md-raised.md-primary(ng-click='save(playlist)') Save
+      md-button.md-raised.md-warn(ng-click='close()') Close

@@ -1,6 +1,6 @@
 md-dialog(flex='80', aria-label='{{ title }}')
   form(name='frm')
-    md-toolbar
+    md-toolbar.md-accent
       .md-toolbar-tools
         h2 {{ title }}
     md-dialog-content(layout-padding='20')
@@ -30,4 +30,4 @@ md-dialog(flex='80', aria-label='{{ title }}')
               | Only .MP3 &amp; .OGG files supported
     md-dialog-actions()
       md-button.md-raised.md-primary(ng-click='save(media)') Save
-      md-button.md-raised.md-warning(ng-click='close()') Close
+      md-button.md-raised.md-warn(ng-click='close()') Close
