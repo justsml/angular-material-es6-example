@@ -1,8 +1,8 @@
 import config           from '../../config';
 import Audio5js         from 'audio5';
-import playlistTemplate from './dialog-playlist.jade';
-import mediaTemplate    from './dialog-media.jade';
-/*@ngInject*/
+import playlistTemplate from '../templates/dialog-playlist.jade';
+import mediaTemplate    from '../templates/dialog-media.jade';
+
 function PlayerUiService($rootScope, $mdToast, $mdDialog) {
   // Tracks currently playing media (hidden var)
   var current = { playlist: null, media: null };
@@ -46,6 +46,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         // AND we are passing the parent '$scope' to the dialog, we MUST
         // use 'ctrl.<xxx>' in the template markup
         controllerAs: 'ctrl',
+        /*@ngInject*/
         controller: function DialogController($scope, $mdDialog, playlistService) {
           var save = function _save(playlist) {
             if (!playlist.title || playlist.title.length < 1 ) {
@@ -76,6 +77,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         // AND we are passing the parent '$scope' to the dialog, we MUST
         // use 'ctrl.<xxx>' in the template markup
         controllerAs: 'ctrl',
+        /*@ngInject*/
         controller: function DialogController($scope, $mdDialog, mediaService) {
           var save = function _save(media) {
             if (!media.title || media.title.length < 1 ) { return $mdToast.showSimple('Media Title required'); }

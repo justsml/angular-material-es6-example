@@ -20,5 +20,8 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
+  log: {
+    level: "debug"
+  }
 
 };

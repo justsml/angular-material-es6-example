@@ -1,7 +1,7 @@
 import config from '../../config';
 
 function PlaylistService($resource, $http, $mdToast, playerUiService) {
-  var Playlist = $resource(config.apiServerUrl+'playlist/:id', {id:'@id'}, { create: { method: 'PUT' } });
+  var Playlist = $resource(config.apiServerUrl+'playlist/:id', {id:'@id'}, { create: { method: 'POST' } });
   return {
     addTrack: ({media}) => {
       var playlist = playerUiService.currentPlaylist();
