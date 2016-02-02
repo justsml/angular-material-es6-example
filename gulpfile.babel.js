@@ -1,7 +1,7 @@
 import gulp     from 'gulp';
 import loader   from 'gulp-load-plugins';
-import tasks    from './gulp/index';
-import config   from './config';
+import tasks    from './build';
+import config   from './config/build';
 
 const plugins = loader({
   pattern: ['vinyl-*', 'del', 'browserify', 'watchify', 'babelify', 'gulp-*', 'gulp.*'],
