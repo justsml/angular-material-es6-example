@@ -40,13 +40,13 @@ npm run docker-run-dev
 ## Schemas
 
 * Media
-    1. Title
-    1. Artist
-    1. Album
-    1. AudioUrl
+    1. `Title`
+    1. `Artist`
+    1. `Album`
+    1. `AudioUrl`
 * Playlist
-    1. Title
-    1. Tracks[]
+    1. `Title`
+    1. `Tracks[Media]`
 
 # CREDIT & REFERENCES
 
