@@ -5,10 +5,10 @@ export default {
   watch: process.env.WATCH ? true : false,
   outputPath: path.resolve(__dirname, '../.tmp/public/'),
   build: {
-    // assetsSrc: [path.resolve(__dirname, '../assets/**')],
-    es6Src:    [path.resolve(__dirname, '../app/index.js')],
+    assetsSrc: [path.resolve(__dirname, '../assets/**')],
+    es6Src:    [path.resolve(__dirname, '../src/index.js')],
     jadeSrc:   [path.resolve(__dirname, '../views/index.jade')],
-    lessSrc:   [path.resolve(__dirname, '../styles/site.less')],
+    lessSrc:   [path.resolve(__dirname, '../src/styles/site.less')],
     vendorSrc: [
       path.resolve(__dirname, '../node_modules/jquery/dist/jquery.min.js'),
       path.resolve(__dirname, '../node_modules/angular/angular.min.js'),

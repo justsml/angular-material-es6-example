@@ -17,6 +17,9 @@
  * The same command-line arguments are supported, e.g.:
  * `node app.js --silent --port=80 --prod`
  */
+// For babel v6: require("babel-core/register");
+require("babel-core/register");
+// For babel v5: require("babel-polyfill");
 
 // Ensure we're in the project directory, so relative paths work as expected
 // no matter where we actually lift from.

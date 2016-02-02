@@ -42,9 +42,9 @@ module.exports.routes = {
   // '/playlist/:id/addTrack': 'Playlist.addTrack',
   // 'post /playlist/:id/track': 'Playlist.addTrack',
 
-  // '/': {
-  //   view: 'index'
-  // }
+  '/': {
+    view: 'index'
+  }
 
   /***************************************************************************
   *                                                                          *
