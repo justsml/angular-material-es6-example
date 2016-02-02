@@ -9,13 +9,13 @@
   3. [x] Queue list, displays title, artist, album
   4. [x] Double-clicking in queue list plays selected song
   5. [ ] When a song finishes playing, play next song in queue
-  6. [ ] Player status: current song title, artist, album, time elapsed, duration
-  7. [ ] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
+  6. [x] Player status: current song title, artist, album, time elapsed, duration
+  7. [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
   1. [ ] Actually playing audio. If not playing audio, just stub out file upload, playing, etc. Make each song just a two minute timer.
   2. [x] Simple UI theme in CSS.
-  3. [x] Persistence in local storage.
+  3. [x] Persistence using **REST API**.
 * Misc Additions
-  1. [ ] Dummy data loader (make it easy to initialize data)
+  1. [x] Dummy data loader (set to auto initialize data)
 
 ## Run the Project
 
