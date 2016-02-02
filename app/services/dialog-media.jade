@@ -1,28 +1,24 @@
-md-dialog(flex='80', aria-label='{{ title }}')
+md-dialog(flex='auto', aria-label='{{ title }}')
   form(name='frm')
     md-toolbar.md-accent
       .md-toolbar-tools
         h2 {{ title }}
-    md-dialog-content(layout-padding='20')
-      div(layout-gt-sm='row')
-        md-input-container.md-block(flex-gt-sm)
+    md-dialog-content(layout, layout-padding)
+      div(layout)
+        md-input-container.md-block(flex='33')
           label Title
           input(type='text', ng-model='media.title')
-        md-input-container.md-block(flex-gt-sm)
+        md-input-container.md-block(flex='33')
           label Album
           input(type='text', ng-model='media.album')
-      div(layout-gt-sm='row')
-        md-input-container.md-block(flex-gt-sm)
+        md-input-container.md-block(flex='33')
           label Artist
           input(type='text', ng-model='media.artist')
-        md-input-container.md-block(flex-gt-sm)
-          label Source URL
-          input(type='text', ng-model='media.sourceUrl')
-      div(layout-gt-sm='row')
-        md-input-container.md-block(flex-gt-sm)
+      div(layout-fill, flex='auto')
+        md-input-container.md-block()
           label Media URL:
-          input(type='text', name='mediaUrl', ng-model='media.mediaUrl', placeholder='mp3/ogg path', required, ng-pattern='/\.(mp3|ogg)$/', md-minlength='9')
-          div(ng-messages='frm.mediaUrl.$error', role='alert', multiple)
+          input(type='text', name='audioUrl', ng-model='media.audioUrl', placeholder='mp3/ogg path', required, ng-pattern='/\.(mp3|ogg)$/', md-minlength='9')
+          div(ng-messages='frm.audioUrl.$error', role='alert')
             .my-message(ng-message='required') You must supply a url.
             .my-message(ng-message='pattern')
               | That doesn't look like a valid url

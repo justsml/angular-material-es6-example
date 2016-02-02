@@ -68,7 +68,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
 
       dialogPromise = $mdDialog.show({
         template:             mediaTemplate(),
-        locals:               { 'save': save, 'media': media },
+        locals:               { 'media': media },
         clickOutsideToClose:  true,
         scope:                $rootScope.$new(), // use parent scope in template
         preserveScope:        false,  // do not forget this if use parent scope

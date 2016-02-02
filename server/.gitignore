@@ -17,6 +17,15 @@
 # to fit your needs!
 ################################################
 
+# Custom Project Stuff
+.public
+*.swp
+*.tmp
+*.log
+assets/media/*
+typings/*
+!typings/tsd.d.ts
+
 
 
 

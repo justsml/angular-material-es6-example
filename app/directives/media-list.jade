@@ -1,21 +1,40 @@
 md-toolbar.md-accent
   .md-toolbar-tools
     h2 {{ currentTitle() }}
-    // span(flex)
-    // //
-md-list(layout-fill, layout-align)
-  md-list-item.md-2-line(ng-repeat="item in results")
-    md-divider
-    .md-list-item-text(layout='row', layout-wrap, layout-margin)
-      h3.title(flex)
-        md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') music_video
-        | {{ item.title }}
-      div(layout='column', flex)
-        p(flex='33')
-          md-icon person
-          | Artist: {{ item.artist }}
-        p(flex='33')
-          md-icon queue_music
-          | Artist: {{ item.artist }}
-      md-checkbox.md-secondary(ng-if='$root.selectMode')
+    span(flex)
+    md-button(ng-click='addTrack({}, playlist)'): md-icon queue
+section(ng-if='playlist')
+  md-subheader.md-primary {{ playlist.title }} Tracks
+  md-list(layout-padding)
+    md-list-item.md-2-line(ng-repeat="item in allPlaylistTracks")
+      md-divider
+      .md-list-item-text(layout='row', layout-wrap, layout-margin)
+        h3.title(flex)
+          md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') music_video
+          | {{ item.title }}
+        div(layout='column', flex)
+          p(flex='33')
+            md-icon person
+            | Artist: {{ item.artist }}
+          p(flex='33')
+            md-icon queue_music
+            | Artist: {{ item.artist }}
+        md-checkbox.md-secondary(ng-if='$root.selectMode')
+section(ng-if='allTracks')
+  md-subheader.md-accent All Music
+  md-list(layout-padding)
+    md-list-item.md-2-line(ng-repeat="item in allTracks")
+      md-divider
+      .md-list-item-text(layout='row', layout-wrap, layout-margin)
+        h3.title(flex)
+          md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') music_video
+          | {{ item.title }}
+        div(layout='column', flex)
+          p(flex='33')
+            md-icon person
+            | Artist: {{ item.artist }}
+          p(flex='33')
+            md-icon queue_music
+            | Artist: {{ item.artist }}
+        md-checkbox.md-secondary(ng-if='$root.selectMode')
 

@@ -3,8 +3,9 @@ import path from 'path';
 export default {
   debug: true,
   watch: process.env.WATCH ? true : false,
-  outputPath: path.resolve(__dirname, '../.public/'),
+  outputPath: path.resolve(__dirname, '../.tmp/public/'),
   build: {
+    // assetsSrc: [path.resolve(__dirname, '../assets/**')],
     es6Src:    [path.resolve(__dirname, '../app/index.js')],
     jadeSrc:   [path.resolve(__dirname, '../views/index.jade')],
     lessSrc:   [path.resolve(__dirname, '../styles/site.less')],

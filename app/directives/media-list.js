@@ -15,9 +15,12 @@ function MediaList($document, mediaService, playerUiService) {
       scope.$root.$on('playlist.select', (event) => {
         var playlist = scope.playlist = playerUiService.currentPlaylist();
         if (playlist && playlist.tracks) {
-          scope.results = playlist.tracks;
+          scope.allPlaylistTracks = playlist.tracks;
         }
       });
+      scope.addTrack = (track, playlist) => {
+        playerUiService.mediaDialog({parent: playlist});
+      }
       scope.currentPlaylist = playerUiService.currentPlaylist;
       scope.currentTitle = () => {
         let playlist = playerUiService.currentPlaylist();
@@ -26,7 +29,7 @@ function MediaList($document, mediaService, playerUiService) {
       }
       function load() {
         return mediaService.query(scope.filters)
-          .then(data => scope.results = data)
+          .then(data => scope.allTracks = data)
       }
     }
   }
