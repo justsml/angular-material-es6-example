@@ -1,3 +1,104 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+	"files.exclude": {
+    ".public": true,
+		"**/.git": true,
+		"**/.DS_Store": true
+	},
+
+	// Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
+	"search.exclude": {
+    ".public": true,
+		"**/node_modules": true,
+		"**/bower_components": true
+	},
+
+  "eslint.enable": true,
+
+	"editor.tabSize": 2,
+
+	"javascript.suggest.alwaysAllWords": true,
+
+	// Complete functions with their parameter signature.
+	"javascript.suggest.useCodeSnippetsOnMethodSuggest": false,
+
+	// Controls how JavaScript validation works.
+
+	// Controls VSCode's JavaScript validation. If set to false both syntax and semantic validation is disabled
+	"javascript.validate.enable": true,
+
+	// Run linter checks for JavaScript files - overrides validate.lint.* settings.
+	"javascript.validate.semanticValidation": true,
+
+	// Check JavaScript files for syntax errors.
+	"javascript.validate.syntaxValidation": true,
+
+	// Controls various aspects of validation.
+
+	// Don't spare curly brackets.
+	"javascript.validate.lint.curlyBracketsMustNotBeOmitted": "ignore",
+
+	// Empty block should have a comment.
+	"javascript.validate.lint.emptyBlocksWithoutComment": "ignore",
+
+	// Use '!==' and '===' instead of '!=' and '=='.
+	"javascript.validate.lint.comparisonOperatorsNotStrict": "ignore",
+
+	// Missing semicolon.
+	"javascript.validate.lint.missingSemicolon": "ignore",
+
+	// Unexpected output of the 'typeof' operator.
+	"javascript.validate.lint.unknownTypeOfResults": "warning",
+
+	// Semicolon instead of block.
+	"javascript.validate.lint.semicolonsInsteadOfBlocks": "ignore",
+
+	// Function inside loop.
+	"javascript.validate.lint.functionsInsideLoops": "ignore",
+
+	// Function with lowercase name used as constructor.
+	"javascript.validate.lint.newOnLowercaseFunctions": "warning",
+
+	// Looks for mistyped triple-slash references.
+	"javascript.validate.lint.tripleSlashReferenceAlike": "warning",
+
+	// Unused local variable.
+	"javascript.validate.lint.unusedVariables": "warning",
+
+	// Unused local function.
+	"javascript.validate.lint.unusedFunctions": "ignore",
+
+	// Parameters don't match a function signature
+	"javascript.validate.lint.parametersDontMatchSignature": "ignore",
+
+	// Don't re-declare a variable and change its type.
+	"javascript.validate.lint.redeclaredVariables": "error",
+
+	// Don't use an undeclared variable.
+	"javascript.validate.lint.undeclaredVariables": "warning",
+
+	// Don't use an unknown property.
+	"javascript.validate.lint.unknownProperty": "ignore",
+
+	// Don't require an unknown module.
+	"javascript.validate.lint.unknownModule": "ignore",
+
+	// Don't re-declare a variable type by an assignment.
+	"javascript.validate.lint.forcedTypeConversion": "warning",
+
+	// Only use numbers for arithmetic operations.
+	"javascript.validate.lint.mixedTypesArithmetics": "warning",
+
+	// Don't use instanceof with primitive types.
+	"javascript.validate.lint.primitivesInInstanceOf": "error",
+
+	// Function with return statement used as constructor.
+	"javascript.validate.lint.newOnReturningFunctions": "warning",
+
+  "jshint.options": {
+    "esversion": 6,
+    "es6": true,
+    "semic": false
+  }
+
 }

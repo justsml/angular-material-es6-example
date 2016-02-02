@@ -1,0 +1,22 @@
+{
+
+  "ecmaFeatures": {
+    "restParams": true,
+    "templateStrings": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "classes": true,
+    "arrowFunctions": true,
+    "modules": true,
+    "destructuring": true,
+    "defaultParams": true,
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+  },
+  "rules": {
+
+  }
+}
