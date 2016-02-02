@@ -1,5 +1,10 @@
 import template from './playlist-menu.jade';
 import dialogTemplate from './playlist-menu-dialog.jade';
+    // var originatorEv;
+    // this.openMenu = function($mdOpenMenu, ev) {
+    //   originatorEv = ev;
+    //   $mdOpenMenu(ev);
+    // };
 
 function PlaylistMenu(playlistService, $mdDialog) {
   return {
@@ -17,7 +22,6 @@ function PlaylistMenu(playlistService, $mdDialog) {
       function load() {
         return playlistService.query(scope.filters).then(data => scope.results = data);
       }
-
       function create() {
         var save = function _save(playlist) {
           if (!playlist.title || playlist.title.length < 1 ) {

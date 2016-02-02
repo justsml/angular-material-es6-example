@@ -8,6 +8,7 @@ const plugins = loader({
   rename: {'vinyl-source-stream': 'source'}
 });
 
+gulp.task('build',    ['default']);
 gulp.task('default',  ['clean', 'vendor', 'es6', 'less', 'jade']);
 gulp.task('es6',      tasks.es6({gulp, plugins, config}));
 gulp.task('vendor',   tasks.vendor({gulp, plugins, config}));

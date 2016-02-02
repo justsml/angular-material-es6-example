@@ -6,21 +6,16 @@
 */
 
 module.exports = {
-
   attributes: {
-
-    title : { type: 'string' },
-
-    artist : { type: 'string' },
-
-    album : { type: 'string' },
-
-    imageUrl : { type: 'string' },
-
-    audioUrl : { type: 'string' },
-
-    sourceUrl : { type: 'string' },
-
+    title: { type: 'string' },
+    artist: { type: 'string' },
+    album: { type: 'string' },
+    imageUrl: { type: 'string' },
+    audioUrl: { type: 'string' },
+    sourceUrl: { type: 'string' },
+    parent: {
+      model: 'playlist'
+    }
   }
 };
 

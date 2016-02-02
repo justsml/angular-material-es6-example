@@ -10,6 +10,7 @@ import navToolbar       from './directives/nav-toolbar'
 import sidenav          from './directives/sidenav'
 import mediaService     from './services/media'
 import playlistService  from './services/playlist'
+import playerUiService  from './services/player-ui'
 
 const app = angular.module('app', ['ngMaterial', 'ngResource']);
 

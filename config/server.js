@@ -14,6 +14,8 @@ export default {
       path.resolve(__dirname, '../node_modules/angular-aria/angular-aria.js'),
       path.resolve(__dirname, '../node_modules/angular-resource/angular-resource.js'),
       path.resolve(__dirname, '../node_modules/angular-animate/angular-animate.js'),
-      path.resolve(__dirname, '../node_modules/angular-material/angular-material.js')],
+      path.resolve(__dirname, '../node_modules/angular-material/angular-material.js'),
+      // path.resolve(__dirname, '../node_modules/audio5/audio5.min.js'),
+    ],
   },
 }

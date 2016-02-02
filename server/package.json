@@ -19,6 +19,6 @@
     "type": "git",
     "url": "git://github.com/dan/api.git"
   },
-  "author": "dan",
-  "license": ""
+  "author": "Dan Levy <Dan@DanLevy.net>",
+  "license": "MIT"
 }

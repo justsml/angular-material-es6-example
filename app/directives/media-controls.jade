@@ -1,6 +1,7 @@
-ul.list-horizontal
-  li: #player-progress.mdl-progress.mdl-js-progress
-  li: button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect: i.material-icons fast_rewind
-  li: button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect: i.material-icons play_arrow
-  li: button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect: i.material-icons pause
-  li: button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect: i.material-icons fast_forward
+div(layout='row', layout-margin, layout-align='center end')
+  div(flex='50')
+    md-progress-linear(md-mode='determinate', value='{{ currentProgress() }}')
+  div(flex): md-button.md-fab(ng-click='prev()'): md-icon fast_rewind
+  div(flex): md-button.md-fab(ng-click='playPause()'): md-icon play_arrow
+  div(flex): md-button.md-fab(ng-click='playPause()'): md-icon pause
+  div(flex): md-button.md-fab(ng-click='next()'): md-icon fast_forward

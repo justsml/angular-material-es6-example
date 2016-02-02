@@ -1,18 +1,17 @@
 md-menu
-  md-button.md-icon-button(aria-label="Open phone interactions menu", ng-click="openMenu($mdOpenMenu, $event)")
+  md-button.md-fab.md-accent.md-icon-button(aria-label="Open phone interactions menu", ng-click="openMenu($mdOpenMenu, $event)")
     md-icon(md-menu-origin="") queue_music
+    md-tooltip New Playlist
   md-menu-content(width="4")
     md-menu-item
-      md-button(ng-click='create()')
-        md-icon playlist_add
-      md-button(ng-click="checkVoicemail()")
-        md-icon(md-svg-icon="call:voicemail")
-        | Check voicemail
+      md-button.md-fab(ng-click='create()')
+        md-icon(md-menu-align-target) playlist_add
     md-menu-divider
-    md-menu-item
-      md-button(ng-click="toggleNotifications()")
-        md-icon(md-svg-icon="social:notifications-{{notificationsEnabled ? 'off' : 'on'}}")
-        | {{notificationsEnabled ? "Disable" : "Enable" }} notifications
+    md-menu-item(ng-repeat='playlist in playlists')
+      md-button(ng-click="select(playlist)")
+        md-icon(ng-if='isCurrent(playlist)') play_circle_outline
+        md-icon(ng-if='!isCurrent(playlist)') toc
+        h4 {{playlist.title}}
   //.demo-avatar-dropdown
     span
       | Playing
@@ -22,7 +21,7 @@ md-menu
       i.material-icons(role="presentation") arrow_drop_down
       span.visuallyhidden Playlists
     ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect(for="accbtn")
-      li.mdl-menu__item(ng-repeat='playlist in playlists') {{ playlist.title }}
+      li.mdl-menu__item() {{ playlist.title }}
       li.mdl-menu__item(ng-click='add()')
         i.material-icons add
         | Add playlist...
