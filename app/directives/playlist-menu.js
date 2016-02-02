@@ -10,6 +10,8 @@ function PlaylistMenu(playlistService, playerUiService, $mdDialog) {
     link: (scope, el, attrs) => {
       scope.filters = scope.filters || {};
       scope.create = playerUiService.playlistDialog;
+      scope.select = playerUiService.currentPlaylist;
+
       scope.$root.$on('playlist.refresh', load);
       load();
       function load() {

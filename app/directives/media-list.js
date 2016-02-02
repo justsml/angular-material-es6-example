@@ -9,11 +9,15 @@ function MediaList($document, mediaService, playerUiService) {
       title:   '=?',
     },
     link: (scope, el, attrs) => {
-      scope.$root.$on('media.refresh', load);
-      scope.$root.$on('playlist.select', (event, playlist) => {
-        scope.playlist = playerUiService.currentPlaylist()
-      });
       scope.filters = scope.filters || {};
+      load();
+      scope.$root.$on('media.refresh', load);
+      scope.$root.$on('playlist.select', (event) => {
+        var playlist = scope.playlist = playerUiService.currentPlaylist();
+        if (playlist && playlist.tracks) {
+          scope.results = playlist.tracks;
+        }
+      });
       scope.currentPlaylist = playerUiService.currentPlaylist;
       scope.currentTitle = () => {
         let playlist = playerUiService.currentPlaylist();

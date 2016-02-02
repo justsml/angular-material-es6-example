@@ -1,9 +1,9 @@
 md-list.playlists(layout-fill, layout-align)
-  md-list-item.md-warn(ng-if='!results || results.length < 1', ng-click='createPlaylist()')
+  md-list-item.md-warn(ng-if='!results || results.length < 1', ng-click='create()')
     .md-list-item-text(layout='row', layout-wrap, layout-margin)
       h3.title(flex): em Add a Playlist
       h4 No Playlists Found
-  md-list-item.md-1-line(ng-repeat="item in results", layout='row', ng-click='selectPlaylist(item)')
+  md-list-item.md-1-line(ng-repeat="item in results", layout='row', ng-click='select(item)')
     md-divider
     .md-list-item-text(layout-margin)
       h3.title
