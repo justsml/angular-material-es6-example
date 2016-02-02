@@ -1,40 +1,39 @@
-md-toolbar.md-accent
-  .md-toolbar-tools
-    h2 {{ currentTitle() }}
-    span(flex)
-    md-button(ng-click='addTrack({}, playlist)'): md-icon queue
-section(ng-if='playlist')
-  md-subheader.md-primary {{ playlist.title }} Tracks
-  md-list(layout-padding)
-    md-list-item.md-2-line(ng-repeat="item in allPlaylistTracks")
-      md-divider
-      .md-list-item-text(layout='row', layout-wrap, layout-margin)
-        h3.title(flex)
-          md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') music_video
-          | {{ item.title }}
-        div(layout='column', flex)
-          p(flex='33')
-            md-icon person
-            | Artist: {{ item.artist }}
-          p(flex='33')
-            md-icon queue_music
-            | Artist: {{ item.artist }}
-        md-checkbox.md-secondary(ng-if='$root.selectMode')
-section(ng-if='allTracks')
-  md-subheader.md-accent All Music
-  md-list(layout-padding)
-    md-list-item.md-2-line(ng-repeat="item in allTracks")
-      md-divider
-      .md-list-item-text(layout='row', layout-wrap, layout-margin)
-        h3.title(flex)
-          md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') music_video
-          | {{ item.title }}
-        div(layout='column', flex)
-          p(flex='33')
-            md-icon person
-            | Artist: {{ item.artist }}
-          p(flex='33')
-            md-icon queue_music
-            | Artist: {{ item.artist }}
-        md-checkbox.md-secondary(ng-if='$root.selectMode')
+div(layout-fill)
+  md-toolbar.md-accent()
+    .md-toolbar-tools
+      h2 {{ currentTitle() }}
+      span(flex)
+      md-button(ng-click='createMedia({}, playlist)')
+        md-icon queue
+        md-tooltip Add a Song
+
+  section()
+    md-subheader.md-warn(ng-if='!playlist')
+      h1
+        md-icon keyboard_arrow_left
+        | Choose a Playlist
+    md-subheader.md-primary(ng-if='playlist') {{ playlist.title }} Tracks
+    md-list(layout-padding, ng-if='playlist')
+      md-list-item.md-accent.md-2-line(ng-repeat="item in allPlaylistTracks", ng-click='currentMedia(item)')
+        md-icon.md-primary(ng-if='currentMedia() && currentMedia().id === item.id', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') play_circle_filled
+        .md-list-item-text(layout='row', layout-wrap, layout-margin)
+          h3.title(flex='30') {{ item.title }}
+          div(layout='column', flex='70')
+            p(flex='33')
+              md-icon person
+              | Artist: {{ item.artist }}
+            p(flex='33')
+              md-icon queue_music
+              | Artist: {{ item.artist }}
+        md-button.md-secondary(ng-click='addRemoveTrack(item, playlist)')
+          md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') clear
+          md-tooltip Remove from {{playlist.title}}
+
+
+  section(ng-if='allTracks')
+    md-subheader.md-accent All Music
+    md-list(layout-padding)
+      md-list-item.md-1-line(ng-repeat="item in allTracks", ng-if='!inPlaylist(item, playlist)', md-clickable)
+        | {{ item.title }}
+        md-checkbox.md-secondary(ng-if='playlist', ng-checked='inPlaylist(item, playlist)', ng-click='addRemoveTrack(item, playlist)', md-tooltip='add to playlist')
 

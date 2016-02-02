@@ -26,10 +26,4 @@ md-sidenav.md-sidenav-left2(md-component-id="left", md-is-locked-open="$mdMedia(
 
 
   md-content()
-    // md-button.md-primary(ng-click="close()", hide-gt-md)
-    //   | Close Sidenav Left
-    md-button.md-primary(ng-click="createMedia()") New Song
-    md-button.md-success(ng-click="createPlaylist()") New List
-    br
-    p(hide-xs, show-gt-xs)
-      playlist-menu()
+    playlist-menu()

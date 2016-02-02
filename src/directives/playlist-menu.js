@@ -9,9 +9,10 @@ function PlaylistMenu(playlistService, playerUiService, sampleDataService) {
     },
     link: (scope, el, attrs) => {
       scope.$root.$on('playlist.refresh', load);
-      scope.filters = scope.filters || {};
-      scope.create = playerUiService.playlistDialog;
-      scope.select = playerUiService.currentPlaylist;
+      scope.filters         = scope.filters || {};
+      scope.create          = playerUiService.playlistDialog;
+      scope.select          = playerUiService.currentPlaylist;
+      scope.currentPlaylist = () => playerUiService.currentPlaylist();
 
       load();
       function load() {

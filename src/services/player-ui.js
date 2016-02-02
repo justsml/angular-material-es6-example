@@ -4,11 +4,9 @@ import playlistTemplate from '../templates/dialog-playlist.jade';
 import mediaTemplate    from '../templates/dialog-media.jade';
 
 function PlayerUiService($rootScope, $mdToast, $mdDialog) {
-  // Tracks currently playing media (hidden var)
   var current = { playlist: null, media: null };
   var dialogPromise;
-  var audio5 = new Audio5js({
-    // swf_path:'/assets/swf/audio5js.swf',
+  var audio5 = new Audio5js({ // swf_path:'/assets/swf/audio5js.swf',
     codecs:         ['mp3'],
     throw_errors:   true,
     format_time:    true,
@@ -42,9 +40,6 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         clickOutsideToClose:  true,
         scope:                $rootScope.$new(), // use parent scope in template
         preserveScope:        false,  // do not forget this if use parent scope
-        // Since the Controller is instantiated with ControllerAs syntax
-        // AND we are passing the parent '$scope' to the dialog, we MUST
-        // use 'ctrl.<xxx>' in the template markup
         controllerAs: 'ctrl',
         /*@ngInject*/
         controller: function DialogController($scope, $mdDialog, playlistService) {
@@ -66,16 +61,12 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
       return dialogPromise;
     },
     mediaDialog: (media = null) => {
-
       dialogPromise = $mdDialog.show({
         template:             mediaTemplate(),
         locals:               { 'media': media },
         clickOutsideToClose:  true,
         scope:                $rootScope.$new(), // use parent scope in template
         preserveScope:        false,  // do not forget this if use parent scope
-        // Since the Controller is instantiated with ControllerAs syntax
-        // AND we are passing the parent '$scope' to the dialog, we MUST
-        // use 'ctrl.<xxx>' in the template markup
         controllerAs: 'ctrl',
         /*@ngInject*/
         controller: function DialogController($scope, $mdDialog, mediaService) {
@@ -118,7 +109,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
       if (media) {
         current.media = media;
         $rootScope.$broadcast('media.select', media);
-        $mdToast.show($mdToast.simple().textContent(`Playing ${media.title}...`));
+        $mdToast.show($mdToast.simple().textContent(`Playing ${media.title}...`).position('right bottom').hideDelay(2500));
         svc.playPause(media);
       }
       return current.media;
