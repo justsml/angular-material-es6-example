@@ -1,5 +1,8 @@
 FROM node:5.5
-MAINTAINER Dan Levy
+MAINTAINER Dan Levy <Dan@DanLevy.net>
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
+RUN npm i -g nodemon
+ENTRYPOINT ["npm", "start"]
 
-
-ENTRYPOINT ["nodemon", "--harmony", "--harmony_modules", "--harmony_sloppy", "--harmony_sloppy_function", "--harmony_sloppy_let", "--harmony_arrow_functions", "--harmony_default_parameters", "--harmony_destructuring", "app"]

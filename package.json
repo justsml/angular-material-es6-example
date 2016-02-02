@@ -5,10 +5,13 @@
   "main": "app.js",
   "scripts": {
     "debug": "DEBUG=* nodemon app.js",
-    "build": "gulp",
+    "build": "gulp build",
     "watch": "gulp watch",
     "test": "mocha test",
-    "start": "nodemon --exec 'node --harmony --harmony_modules --harmony_sloppy --harmony_sloppy_function --harmony_sloppy_let --harmony_arrow_functions --harmony_default_parameters --harmony_destructuring' app"
+    "start": "nodemon app",
+    "docker-build":   "docker build -t jsbeats .",
+    "docker-run":     "docker run --name jsbeats --detach --rm -p 8080:1337 jsbeats",
+    "docker-run-dev": "docker run --name jsbeats --rm -p 8080:1337 -v $PWD:/app jsbeats"
   },
   "author": "Dan Levy <Dan@DanLevy.net>",
   "license": "MIT",
@@ -55,6 +58,7 @@
     "lodash": "^4.1.0",
     "material-design-lite": "github:google/material-design-lite",
     "mocha": "^2.4.5",
+    "nodemon": "^1.8.1",
     "rc": "~0.5.0",
     "sails": "^0.11.4",
     "sails-disk": "~0.10.0",
