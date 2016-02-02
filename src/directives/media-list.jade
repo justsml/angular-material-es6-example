@@ -1,35 +1,41 @@
-div(layout-fill)
-  md-toolbar.md-accent()
-    .md-toolbar-tools
-      h2 {{ currentTitle() }}
-      span(flex)
-      md-button(ng-click='createMedia({}, playlist)')
-        md-icon queue
-        md-tooltip Add a Song
-
-  section()
+md-toolbar.md-accent()
+  .md-toolbar-tools
+    h2 {{ currentTitle() }}
+    span(flex)
+    md-button(ng-click='createMedia({}, playlist)')
+      md-icon(style='font-size: 2.5em;') queue
+      md-tooltip Add a Song
+div(layout-fill, layout, layout-align='center stretch')
+  section(flex='50')
+    md-subheader.md-primary(ng-if='!playlist', layout-align='center center')
+      h3 [No Playlist Selected]
     md-subheader.md-primary(ng-if='playlist')
       h2 {{ playlist.title }} Tracks
     md-list(layout-margin, ng-if='playlist')
       md-list-item.md-accent.md-2-line(ng-repeat="item in allPlaylistTracks", ng-click='currentMedia(item)')
         md-icon.md-primary(ng-if='currentMedia() && currentMedia().id === item.id', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') play_circle_filled
         .md-list-item-text(layout='row', layout-wrap, layout-margin)
-          h3.title(flex='30') {{ item.title }}
+          h3.title(flex='30')
+            | {{ item.title }}
           div(layout='column', flex='70')
             p(flex='33')
               md-icon person
               | Artist: {{ item.artist }}
             p(flex='33')
               md-icon queue_music
-              | Artist: {{ item.artist }}
-        md-button.md-secondary(ng-click='addRemoveTrack(item, playlist)')
-          md-icon.md-warn(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') delete
-          md-tooltip Remove from {{playlist.title}}
+              | Album: {{ item.album }}
+          div.md-secondary(layout='row')
+            md-button(flex, ng-href='{{item.sourceUrl}}', ng-if='item.sourceUrl')
+              a(ng-href='{{item.sourceUrl}}', ng-if='item.sourceUrl', target='_blank'): md-icon.md-accent.md-mini() info_outline
+              md-tooltip Open Link to {{playlist.sourceUrl}}
+            md-button(flex, ng-click='addRemoveTrack(item, playlist)')
+              md-icon.md-warn(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') delete
+              md-tooltip Remove from {{playlist.title}}
         md-divider
 
-  section(ng-if='allTracks')
-    md-subheader.md-warn(ng-if='playlist && allTracksRemaining() <= 0')
-       h2 All Your Media Has Been Added to The Current Playlist
+  section(flex='50', ng-if='allTracks')
+    md-subheader.md-accent(ng-if='playlist && allTracksRemaining() <= 0')
+       h4 All Media Added to The Current Playlist
     md-subheader.md-accent(ng-if='allTracksRemaining() >= 1')
       h2 All Music
       span(flex)
