@@ -24,7 +24,7 @@ function SampleData(mediaService, playlistService, $mdToast, $rootScope) {
     Promise.join(trackPromise, playlistPromise,
     function _handleResults(trackResult, playlistResult) {
       console.log('Data Load Results', arguments);
-      $mdToast.showSimple('Loaded Sample Data!');
+      $mdToast.showSimple('*** Note: Sample Data Loaded! ***');
       $rootScope.$broadcast('media.refresh');
       $rootScope.$broadcast('playlist.refresh');
     });
@@ -32,6 +32,7 @@ function SampleData(mediaService, playlistService, $mdToast, $rootScope) {
 
   return {
     prompt: prompt,
+    loadData: loadData,
   }
 }
 

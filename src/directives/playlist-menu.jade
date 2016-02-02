@@ -1,3 +1,8 @@
+md-subheader.md-warn(ng-if='results && results.length >= 1 && !currentPlaylist()', layout, layout-align='center center')
+  h1(flex)
+    md-icon arrow_drop_down
+    | Choose a Playlist
+    md-icon arrow_drop_down
 md-list.playlists(layout-fill, layout-align)
   md-list-item.md-warn(ng-if='!results || results.length < 1', ng-click='create()')
     .md-list-item-text(layout='row', layout-margin)

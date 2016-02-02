@@ -8,12 +8,9 @@ div(layout-fill)
         md-tooltip Add a Song
 
   section()
-    md-subheader.md-warn(ng-if='!playlist')
-      h1
-        md-icon keyboard_arrow_left
-        | Choose a Playlist
-    md-subheader.md-primary(ng-if='playlist') {{ playlist.title }} Tracks
-    md-list(layout-padding, ng-if='playlist')
+    md-subheader.md-primary(ng-if='playlist')
+      h2 {{ playlist.title }} Tracks
+    md-list(layout-margin, ng-if='playlist')
       md-list-item.md-accent.md-2-line(ng-repeat="item in allPlaylistTracks", ng-click='currentMedia(item)')
         md-icon.md-primary(ng-if='currentMedia() && currentMedia().id === item.id', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') play_circle_filled
         .md-list-item-text(layout='row', layout-wrap, layout-margin)
@@ -26,14 +23,20 @@ div(layout-fill)
               md-icon queue_music
               | Artist: {{ item.artist }}
         md-button.md-secondary(ng-click='addRemoveTrack(item, playlist)')
-          md-icon(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') clear
+          md-icon.md-warn(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') delete
           md-tooltip Remove from {{playlist.title}}
-
+        md-divider
 
   section(ng-if='allTracks')
-    md-subheader.md-accent All Music
-    md-list(layout-padding)
-      md-list-item.md-1-line(ng-repeat="item in allTracks", ng-if='!inPlaylist(item, playlist)', md-clickable)
-        | {{ item.title }}
-        md-checkbox.md-secondary(ng-if='playlist', ng-checked='inPlaylist(item, playlist)', ng-click='addRemoveTrack(item, playlist)', md-tooltip='add to playlist')
-
+    md-subheader.md-warn(ng-if='playlist && allTracksRemaining() <= 0')
+       h2 All Your Media Has Been Added to The Current Playlist
+    md-subheader.md-accent(ng-if='allTracksRemaining() >= 1')
+      h2 All Music
+      span(flex)
+    md-list(layout-margin, ng-if='allTracksRemaining() >= 1')
+      md-list-item(ng-repeat="item in allTracks", ng-if='!inPlaylist(item, playlist)', md-clickable)
+        md-button(ng-if='playlist', ng-click='addRemoveTrack(item, playlist)')
+          //- md-icon(ng-if='inPlaylist(item, playlist)', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') add_circle
+          md-icon.md-primary(ng-style='{"font-size": "1.8em", margin: "0 .35em"}') add_circle
+          md-tooltip Add to Playlist: {{playlist.title}}
+        b {{ item.title }}

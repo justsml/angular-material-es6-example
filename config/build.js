@@ -5,7 +5,7 @@ export default {
   watch: process.env.WATCH ? true : false,
   outputPath: path.resolve(__dirname, '../.tmp/public/'),
   build: {
-    assetsSrc: [path.resolve(__dirname, '../assets/**')],
+    assetsSrc: [path.resolve(__dirname, '../assets/**'), path.resolve(__dirname, '../node_modules/audio5/swf/**')],
     es6Src:    [path.resolve(__dirname, '../src/index.js')],
     jadeSrc:   [path.resolve(__dirname, '../views/index.jade')],
     lessSrc:   [path.resolve(__dirname, '../src/styles/site.less')],

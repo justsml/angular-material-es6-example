@@ -4,26 +4,12 @@ md-sidenav.md-sidenav-left2(md-component-id="left", md-is-locked-open="$mdMedia(
       // md-icon(md-menu-origin="") queue_music
       h2: span Playlists
       span(flex)
-      md-button.md-icon-button(ng-click='createPlaylist()')
+      md-button(ng-click='createPlaylist()', style='font-size: 1.5em;')
         md-icon playlist_add
         md-tooltip Create Playlist
-      //- md-fab-toolbar(md-primary, md-direction="left")
-        md-fab-trigger.align-with-text
-          md-button.md-fab.md-primary(aria-label="menu")
-            md-icon queue_music
-        md-toolbar
-          md-fab-actions.md-toolbar-tools
-            md-switch.md-secondary(ng-model='$root.selectMode')
-            md-button(aria-label="comment")
-              md-icon comment
-              b Test
-            md-button.md-icon-button(aria-label="label")
-              md-icon label
-              em Other
-            md-button.md-icon-button(aria-label="photo")
-              md-icon photo
-              | Blah
 
 
   md-content()
     playlist-menu()
+    span(flex)
+    media-controls()

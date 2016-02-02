@@ -1,6 +1,6 @@
 import template from './media-list.jade';
 
-function MediaList($document, mediaService, playlistService, playerUiService) {
+function MediaList($timeout, mediaService, playlistService, playerUiService) {
   return {
     template:   template,
     restrict:   'E',
@@ -13,10 +13,10 @@ function MediaList($document, mediaService, playlistService, playerUiService) {
       scope.currentPlaylist = playerUiService.currentPlaylist;
       scope.currentMedia    = playerUiService.currentMedia;
       scope.$root.$on('media.refresh', load);
-      scope.$root.$on('playlist.select', (event) => {
-        var playlist = scope.playlist = playerUiService.currentPlaylist();
-        if (playlist && playlist.tracks) {
-          scope.allPlaylistTracks = playlist.tracks;
+      scope.$root.$on('playlist.select', (event, playlist) => {
+        scope.playlist = playlist || playerUiService.currentPlaylist();
+        if (scope.playlist && scope.playlist.tracks) {
+          scope.allPlaylistTracks = scope.playlist.tracks;
         }
       });
       scope.createMedia = (track, playlist) => {
@@ -28,17 +28,33 @@ function MediaList($document, mediaService, playlistService, playerUiService) {
         return `Media List (${titleTag})`;
       }
       scope.addRemoveTrack = (track, playlist) => {
-        if (scope.inPlaylist(track, playlist)) {
-          playlistService.addTrack({media: track, playlist});
+        if (!scope.inPlaylist(track, playlist)) {
+          playlistService.addTrack({media: track, playlist})
+            .success(data => {
+              scope.playlist = data;
+              scope.allPlaylistTracks = scope.playlist.tracks;
+            })
         } else {
-          playlistService.removeTrack({media: track, playlist});
+          playlistService.removeTrack({media: track, playlist})
+            .success(data => {
+              scope.playlist = data;
+              scope.allPlaylistTracks = scope.playlist.tracks;
+            })
         }
+        $timeout(() => {
+          scope.$root.$broadcast('media.refresh');
+          scope.$root.$broadcast('playlist.refresh');
+        }, 500);
       }
       scope.inPlaylist = (track, playlist) => {
         if (!playlist) { return false; }
         let {tracks} = playlist;
         let matched = tracks.filter(t => t.id === track.id);
         return matched && matched.length >= 1 ? true : false;
+      }
+      scope.allTracksRemaining = () => {
+        let remaining = scope.allTracks.filter(item => !scope.inPlaylist(item, scope.playlist))
+        return remaining.length;
       }
 
       load();

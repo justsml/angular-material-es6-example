@@ -20,7 +20,9 @@ function PlaylistMenu(playlistService, playerUiService, sampleDataService) {
           .then(data => {
             scope.results = data;
             if (!data || data.length <= 0) {
-              sampleDataService.prompt();
+              // just auto load for now
+              sampleDataService.loadData();
+              // sampleDataService.prompt();
             }
           });
       }

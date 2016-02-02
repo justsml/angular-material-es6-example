@@ -6,31 +6,60 @@ import mediaTemplate    from '../templates/dialog-media.jade';
 function PlayerUiService($rootScope, $mdToast, $mdDialog) {
   var current = { playlist: null, media: null };
   var dialogPromise;
-  var audio5 = new Audio5js({ // swf_path:'/assets/swf/audio5js.swf',
+  var audioReady = false, currentPlayPercent = 0;
+  var audio5 = new Audio5js({
+    swf_path:'/assets/audio5js.swf',
     codecs:         ['mp3'],
     throw_errors:   true,
     format_time:    true,
+    ready: function() {
+      audioReady = true;
+      this.on('timeupdate', (percent) => {
+        currentPlayPercent = percent;
+      }, this)
+    }
   });
 
   var svc = {
     audio5, // expose instance for debugging
-    getPlayPercent: () => audio5.load_percent,
+    getPlayPercent: () => currentPlayPercent,
     getPlayTime:    () => audio5.position,
     isPlaying:      () => audio5.playing,
     playPause: (media) => {
+      if (!audioReady) { return false; }
       if (media && media.audioUrl) {
-        audio5.load(media.audioUrl);
+        audio5.load.call(audio5, media.audioUrl);
+      } else if (audio5.playing) {
+        audio5.playPause.call(audio5);
       } else {
-        audio5.playPause();
+        // do nothing
       }
+      return media;
     },
     next: () => {
       var {playlist, media} = current;
       if ( !playlist ) { return $mdToast.showSimple('Error: No Playlist Selected') }
       var {tracks}          = playlist;
-      var curIndex          = tracks.indexOf(media) + 1;
-      if (curIndex >= tracks.length-1) { curIndex = 0;}
       if ( !tracks || tracks.length === 0 ) { return $mdToast.showSimple('Error: Playlist Has no Tracks') }
+      var curIndex          = tracks.indexOf(media);
+      if ( !tracks[curIndex+1] ) {
+        curIndex = 0;
+      } else {
+        curIndex ++;
+      }
+      return svc.currentMedia(tracks[curIndex]);
+    },
+    prev: () => {
+      var {playlist, media} = current;
+      if ( !playlist ) { return $mdToast.showSimple('Error: No Playlist Selected') }
+      var {tracks}          = playlist;
+      if ( !tracks || tracks.length === 0 ) { return $mdToast.showSimple('Error: Playlist Has no Tracks') }
+      var curIndex          = tracks.indexOf(media);
+      if ( curIndex >= 1 && !tracks[curIndex-1] ) {
+        curIndex = 0; //fall to beginning
+      } else {
+        curIndex --;
+      }
       return svc.currentMedia(tracks[curIndex]);
     },
     playlistDialog: (playlist = null) => {
@@ -44,6 +73,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         /*@ngInject*/
         controller: function DialogController($scope, $mdDialog, playlistService) {
           var save = function _save(playlist) {
+            if (!playlist) { return $mdDialog.hide(dialogPromise); }
             if (!playlist.title || playlist.title.length < 1 ) {
               return $mdToast.showSimple('Playlist Title required');
             }
@@ -71,6 +101,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         /*@ngInject*/
         controller: function DialogController($scope, $mdDialog, mediaService) {
           var save = function _save(media) {
+            if (!media) { return $mdDialog.hide(dialogPromise); }
             if (!media.title || media.title.length < 1 ) { return $mdToast.showSimple('Media Title required'); }
             if (!media.audioUrl || media.audioUrl.length < 1 || /\.mp3$/i.test(media.audioUrl) ) { return $mdToast.showSimple('Audio URL required'); }
             return mediaService.save(media)

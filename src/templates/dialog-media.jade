@@ -2,7 +2,8 @@ md-dialog(flex='auto', aria-label='{{ title }}')
   form(name='frm')
     md-toolbar.md-accent
       .md-toolbar-tools
-        h2 {{ title }}
+        h2(ng-if='media && media.id') Edit {{ media.title }}
+        h2(ng-if='!media || !media.id') Add New Media
     md-dialog-content(layout, layout-padding)
       div(layout)
         md-input-container.md-block(flex='33')
