@@ -1,26 +1,9 @@
-md-list(layout-fill)
-  md-toolbar.md-accent
-    .md-toolbar-tools
-      h2 {{ title }}
-      span(flex)
-      //
-  md-fab-toolbar(md-primary, md-direction="left")
-    md-fab-trigger.align-with-text
-      md-button.md-fab.md-primary(aria-label="menu")
-        md-icon menu
-    md-toolbar
-      md-fab-actions.md-toolbar-tools
-        md-switch.md-secondary(ng-model='$root.selectMode')
-        md-button(aria-label="comment")
-          md-icon comment
-          b Test
-        md-button.md-icon-button(aria-label="label")
-          md-icon label
-          em Other
-        md-button.md-icon-button(aria-label="photo")
-          md-icon photo
-          | Blah
-
+md-toolbar.md-accent
+  .md-toolbar-tools
+    h2 {{ title }}
+    // span(flex)
+    // //
+md-list(layout-fill, layout-align)
   md-list-item.md-2-line(ng-repeat="item in results")
     md-divider
     .md-list-item-text(layout='row', layout-wrap, layout-margin)

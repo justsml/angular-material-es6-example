@@ -5,9 +5,9 @@ block head
 
 block body
   nav-toolbar()
-  section(layout="row", flex)
+  section(layout='row', flex)
     sidenav()
-    md-content(flex, layout="row")
-      media-list(flex)
+    div(flex='100', layout='row', layout-margin, layout-fill)
+      media-list(flex, md-whiteframe='3', layout-fill)
 
     media-details(media='currentMediaItem')

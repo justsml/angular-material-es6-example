@@ -19,6 +19,7 @@ app.config(themeConfig)
 
   .factory('mediaService',        mediaService)
   .factory('playlistService',     playlistService)
+  .factory('playerUiService',     playerUiService)
 
   .directive('playlistMenu',      playlistMenu)
   .directive('mediaList',         mediaList)

@@ -19,7 +19,6 @@ function PlaylistService($resource, $http, $mdToast, playerUiService) {
         .error($mdToast.showSimple)
         .success(playerUiService.currentPlaylist)
     },
-
     get: (id = '') => {              return Playlist.get({id}).$promise },
     remove: (id = '') => {           return Playlist.remove({id}).$promise },
     query: ({title}) => {            return Playlist.query({title}).$promise },
