@@ -48,13 +48,17 @@ npm run docker-run-dev
     1. `Title`
     1. `Tracks[Media]`
 
-# CREDIT & REFERENCES
+## CREDIT & REFERENCES
 
 * [Exploring ES6 Patterns for Angular v1.0](http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x%20nice)
 * [Angular & Material Design Info](https://scotch.io/bar-talk/angular-material-vs-material-design-lite)
 * [ES6 Module Info](http://www.2ality.com/2014/09/es6-modules-final.html)
 * [REST API built using SailsJS](https://www.smashingmagazine.com/2015/11/sailing-sails-js-mvc-style-framework-node-js/)
 
+### Sample MP3 Files - Credit
 
+* https://soundcloud.com/trapmusic/fuzzy-peach-by-brillz-minxx
+* https://soundcloud.com/trapmusic/hydraulix-oski-lets-play
+* https://soundcloud.com/dubpolice/subscape-shanghai
 
 
