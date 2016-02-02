@@ -6,9 +6,8 @@ function SideNav(playerUiService) {
     restrict:   'E',
     scope:      {},
     link: (scope, el, attrs) => {
-      scope.createPlaylist = () => {
-        playerUiService.createPlaylist();
-      }
+      scope.createPlaylist = playerUiService.playlistDialog
+      scope.selectPlaylist = playerUiService.currentPlaylist
     }
   }
 }
