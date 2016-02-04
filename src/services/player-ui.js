@@ -11,7 +11,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
       audioReady = false,
       playDuration = '',
       playTime = '',
-      currentPlayPercent = 0;
+      playPercent = 0;
   var playMedia = function(media) {
     if ( playerCtx ) {
       if ( playerCtx.playing ) { playerCtx.pause(); }
@@ -21,7 +21,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
       swf_path:'/assets/audio5js.swf',
       codecs:         ['mp3'],
       throw_errors:   true,
-      format_time:    true,
+      format_time:    false,
       ready: function() {
         console.log('Audio.ready (init)', media);
         playerCtx = this;
@@ -33,9 +33,9 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
           audioReady = true;
         });
         this.on('timeupdate', (percent) => {
-          currentPlayPercent = percent;
-          playTime = this.position;
-          playDuration = formatTime(this.duration);
+          playPercent  = (this.position / this.duration) * 100;
+          playTime            = formatTime(this.position);
+          playDuration        = formatTime(this.duration);
         }, this);
         this.on('ended', () => {
           console.log('Audio.ended', this);
@@ -55,10 +55,10 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
   }
 
   var svc = {
-    playerCtx:      () => playerCtx,
+    context:        () => playerCtx,
     canPlay:        () => audioReady,
-    getPlayPercent: () => currentPlayPercent,
-    getPlayTime:    () => playerCtx && playerCtx.position,
+    getPlayPercent: () => playPercent,
+    getPlayTime:    () => playTime,
     getDuration:    () => playDuration,
     isPlaying:      () => playerCtx && playerCtx.playing,
     play:           (media) => {

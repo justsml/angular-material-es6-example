@@ -11,7 +11,10 @@ function MediaControls(playerUiService, $interval) {
       scope.player = playerUiService;
 
 
-      $interval(() => scope.playTime = playerUiService.getPlayTime(), 1000);
+      $interval(() => {
+        scope.playTime    = playerUiService.getPlayTime();
+        scope.playPercent = playerUiService.getPlayPercent();
+      }, 1000);
 
       scope.isPlaying       = () => playerUiService.isPlaying();
       scope.currentMedia    = () => playerUiService.currentMedia();
