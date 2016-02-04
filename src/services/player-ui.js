@@ -25,10 +25,13 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
     getPlayPercent: () => currentPlayPercent,
     getPlayTime:    () => audio5.position,
     isPlaying:      () => audio5.playing,
+    play:           () => audio5.play(),
+    pause:          () => audio5.pause(),
     playPause: (media) => {
       if (!audioReady) { return false; }
       if (media && media.audioUrl) {
         audio5.load.call(audio5, media.audioUrl);
+        audio5.play.call(audio5);
       } else if (audio5.playing) {
         audio5.playPause.call(audio5);
       } else {

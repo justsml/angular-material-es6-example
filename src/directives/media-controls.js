@@ -1,6 +1,4 @@
 import template from './media-controls.jade';
-import _        from 'lodash';
-
 
 function MediaControls(playerUiService) {
   return {
@@ -8,6 +6,10 @@ function MediaControls(playerUiService) {
     restrict:   'E',
     scope:      {},
     link: (scope, el, attrs) => {
+      // trying exposing the whole service to the scope
+      scope.player = playerUiService;
+
+
       scope.isPlaying       = () => playerUiService.isPlaying();
       scope.currentMedia    = () => playerUiService.currentMedia();
       scope.currentPlaylist = () => playerUiService.currentPlaylist();
