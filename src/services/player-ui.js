@@ -2,15 +2,22 @@ import config           from '../../config';
 import Audio5js         from 'audio5';
 import playlistTemplate from '../templates/dialog-playlist.jade';
 import mediaTemplate    from '../templates/dialog-media.jade';
+import formatTime       from '../modules/format-time';
 
 function PlayerUiService($rootScope, $mdToast, $mdDialog) {
   var current = { playlist: null, media: null };
   var dialogPromise;
-  var audioReady = false, currentPlayPercent = 0;
-  var playerCtx = null;
-  var playerInstance = null;
+  var playerCtx = null,
+      audioReady = false,
+      playDuration = '',
+      playTime = '',
+      currentPlayPercent = 0;
   var playMedia = function(media) {
-    playerInstance = new Audio5js({
+    if ( playerCtx ) {
+      if ( playerCtx.playing ) { playerCtx.pause(); }
+      playerCtx.destroy();
+    }
+    playerCtx = new Audio5js({
       swf_path:'/assets/audio5js.swf',
       codecs:         ['mp3'],
       throw_errors:   true,
@@ -27,6 +34,8 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         });
         this.on('timeupdate', (percent) => {
           currentPlayPercent = percent;
+          playTime = this.position;
+          playDuration = formatTime(this.duration);
         }, this);
         this.on('ended', () => {
           console.log('Audio.ended', this);
@@ -35,7 +44,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
 
         this.on('play', () => { console.log('Audio.play', this) }, this);
         this.on('pause', () => { console.log('Audio.pause', this) }, this);
-        this.on('loadedmetadata', () => { console.log('Audio.loadedmetadata', this) }, this);
+        this.on('loadedmetadata', () => { console.log('Audio.loadedmetadata', arguments, this) }, this);
 
         this.on('error', (err) => {
           $mdToast.showSimple('Error Loading Media');
@@ -50,6 +59,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
     canPlay:        () => audioReady,
     getPlayPercent: () => currentPlayPercent,
     getPlayTime:    () => playerCtx && playerCtx.position,
+    getDuration:    () => playDuration,
     isPlaying:      () => playerCtx && playerCtx.playing,
     play:           (media) => {
       console.log('playing...', arguments, playerCtx);

@@ -1,7 +1,7 @@
 import template from './media-controls.jade';
 import _        from 'lodash';
 
-function MediaControls(playerUiService) {
+function MediaControls(playerUiService, $interval) {
   return {
     template:   template,
     restrict:   'E',
@@ -10,6 +10,8 @@ function MediaControls(playerUiService) {
       // trying exposing the whole service to the scope
       scope.player = playerUiService;
 
+
+      $interval(() => scope.playTime = playerUiService.getPlayTime(), 1000);
 
       scope.isPlaying       = () => playerUiService.isPlaying();
       scope.currentMedia    = () => playerUiService.currentMedia();
@@ -26,7 +28,7 @@ function MediaControls(playerUiService) {
       scope.next            = () => playerUiService.next();
 
       scope.playlistPosition = () => {
-        console.warn('playlistPosition', playerUiService);
+        // console.warn('playlistPosition', playerUiService);
         var playlist          = playerUiService.currentPlaylist();
         var media             = playerUiService.currentMedia();
         if (!playlist) { return {position: -1, nextEnabled: false, prevEnabled: false}; }

@@ -1,5 +1,7 @@
-div(layout='row', layout-align)
-  label(flex, style='width: 80px;') {{ player.getPlayTime() }}
+.status-bar(layout='row', layout-align='space-between')
+  label(flex='nogrow') {{ player.getPlayTime() }}
+  label.title(flex='grow') {{ currentMedia().title }}
+  label(flex='nogrow') {{ player.getDuration() }}
 
 div(layout='row', layout-align)
   md-progress-linear.md-warn(flex='auto', md-mode='determinate', value='{{ currentProgress() }}')

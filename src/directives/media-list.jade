@@ -7,8 +7,8 @@ md-toolbar.md-accent()
       md-tooltip Add a Song
 div(layout-fill, layout, layout-align='center stretch')
   section(flex='50')
-    md-subheader.md-primary(ng-if='!playlist', layout-align='center center')
-      h3 [No Playlist Selected]
+    md-subheader.md-warn(ng-if='!playlist', layout-align='center center')
+      h2 [No Playlist Selected]
     md-subheader.md-primary(ng-if='playlist')
       h2 {{ playlist.title }} Tracks
     md-list(layout-margin, ng-if='playlist')
