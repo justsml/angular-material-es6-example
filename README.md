@@ -15,7 +15,7 @@
   5. [ ] When a song finishes playing, play next song in queue
   6. [x] Player status: current song title, artist, album, time elapsed, duration
   7. [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
-  1. [ ] Actually playing audio. If not playing audio, just stub out file upload, playing, etc. Make each song just a two minute timer.
+  1. [x] Actually playing audio. If not playing audio, just stub out file upload, playing, etc. Make each song just a two minute timer.
   2. [x] Simple UI theme in CSS.
   3. [x] Persistence using **REST API**.
 * Misc Additions

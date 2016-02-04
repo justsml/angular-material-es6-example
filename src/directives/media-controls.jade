@@ -1,11 +1,14 @@
 div(layout='row', layout-align)
-  md-progress-linear.md-warn(md-mode='determinate', value='{{ currentProgress() }}')
+  label(flex, style='width: 80px;') {{ player.getPlayTime() }}
+
+div(layout='row', layout-align)
+  md-progress-linear.md-warn(flex='auto', md-mode='determinate', value='{{ currentProgress() }}')
 div(layout='row', layout-margin, layout-align='center end')
   div(flex): md-button.md-fab(ng-disabled='!playlistPosition().prevEnabled', ng-click='prev()'): md-icon fast_rewind
   div(flex)
-    md-button.md-warn.md-fab(ng-disabled='!isPlaying()', ng-click='player.pause()')
+    md-button.md-warn.md-fab(ng-disabled='!isPlaying()', ng-click='player.playPause()')
       md-icon() pause
   div(flex)
-    md-button.md-accent.md-fab(ng-disabled='isPlaying()', ng-click='player.play()')
+    md-button.md-accent.md-fab(ng-disabled='isPlaying()', ng-click='player.playPause(currentMedia())')
       md-icon() play_arrow
   div(flex): md-button.md-fab(ng-disabled='!playlistPosition().nextEnabled', ng-click='next()'): md-icon fast_forward

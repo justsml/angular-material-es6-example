@@ -1,4 +1,5 @@
 import template from './media-controls.jade';
+import _        from 'lodash';
 
 function MediaControls(playerUiService) {
   return {
@@ -25,6 +26,7 @@ function MediaControls(playerUiService) {
       scope.next            = () => playerUiService.next();
 
       scope.playlistPosition = () => {
+        console.warn('playlistPosition', playerUiService);
         var playlist          = playerUiService.currentPlaylist();
         var media             = playerUiService.currentMedia();
         if (!playlist) { return {position: -1, nextEnabled: false, prevEnabled: false}; }

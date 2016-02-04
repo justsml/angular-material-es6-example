@@ -7,33 +7,63 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
   var current = { playlist: null, media: null };
   var dialogPromise;
   var audioReady = false, currentPlayPercent = 0;
-  var audio5 = new Audio5js({
-    swf_path:'/assets/audio5js.swf',
-    codecs:         ['mp3'],
-    throw_errors:   true,
-    format_time:    true,
-    ready: function() {
-      audioReady = true;
-      this.on('timeupdate', (percent) => {
-        currentPlayPercent = percent;
-      }, this)
-    }
-  });
+  var playerCtx = null;
+  var playerInstance = null;
+  var playMedia = function(media) {
+    playerInstance = new Audio5js({
+      swf_path:'/assets/audio5js.swf',
+      codecs:         ['mp3'],
+      throw_errors:   true,
+      format_time:    true,
+      ready: function() {
+        console.log('Audio.ready (init)', media);
+        playerCtx = this;
+        this.load(media.audioUrl);
+        this.play();
+        this.one('canplay', () => {
+          console.log('Audio.canplay', this);
+          playerCtx = this;
+          audioReady = true;
+        });
+        this.on('timeupdate', (percent) => {
+          currentPlayPercent = percent;
+        }, this);
+        this.on('ended', () => {
+          console.log('Audio.ended', this);
+          svc.next();
+        }, this);
+
+        this.on('play', () => { console.log('Audio.play', this) }, this);
+        this.on('pause', () => { console.log('Audio.pause', this) }, this);
+        this.on('loadedmetadata', () => { console.log('Audio.loadedmetadata', this) }, this);
+
+        this.on('error', (err) => {
+          $mdToast.showSimple('Error Loading Media');
+          console.error('Audio5 Error', err);
+        }, this);
+      }
+    });
+  }
 
   var svc = {
-    audio5, // expose instance for debugging
+    playerCtx:      () => playerCtx,
+    canPlay:        () => audioReady,
     getPlayPercent: () => currentPlayPercent,
-    getPlayTime:    () => audio5.position,
-    isPlaying:      () => audio5.playing,
-    play:           () => audio5.play(),
-    pause:          () => audio5.pause(),
+    getPlayTime:    () => playerCtx && playerCtx.position,
+    isPlaying:      () => playerCtx && playerCtx.playing,
+    play:           (media) => {
+      console.log('playing...', arguments, playerCtx);
+      playMedia(media);
+    },
+    pause:          () => playerCtx.pause.call(playerCtx),
     playPause: (media) => {
+      console.log('svc.playPause', arguments);
       if (!audioReady) { return false; }
       if (media && media.audioUrl) {
-        audio5.load.call(audio5, media.audioUrl);
-        audio5.play.call(audio5);
-      } else if (audio5.playing) {
-        audio5.playPause.call(audio5);
+        playerCtx.load.call(playerCtx, media.audioUrl);
+        playerCtx.play.call(playerCtx);
+      } else if (playerCtx.playing) {
+        playerCtx.playPause.call(playerCtx);
       } else {
         // do nothing
       }
@@ -120,8 +150,8 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
       return dialogPromise;
     },
     resetPlaylist: () => {
-      if ( audio5.playing ) {
-        audio5.stop();
+      if ( playerCtx.playing ) {
+        playerCtx.stop();
       }
       current.playlist = null;
       current.media    = null;
@@ -144,7 +174,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         current.media = media;
         $rootScope.$broadcast('media.select', media);
         $mdToast.show($mdToast.simple().textContent(`Playing ${media.title}...`).position('right bottom').hideDelay(2500));
-        svc.playPause(media);
+        svc.play(media);
       }
       return current.media;
     }
