@@ -7,19 +7,18 @@
 
 ## Requirements:
 
-* Initial List
-  1. [x] Add music button, opens add music form
-  2. [x] Add music form, title, artist, album, file
-  3. [x] Queue list, displays title, artist, album
-  4. [x] Double-clicking in queue list plays selected song
-  5. [x] When a song finishes playing, play next song in queue
-  6. [x] Player status: current song title, artist, album, time elapsed, duration
-  7. [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
-  1. [x] Actually playing audio. If not playing audio, just stub out file upload, playing, etc. Make each song just a two minute timer.
-  2. [x] Simple UI theme in CSS.
-  3. [x] Persistence using **REST API**.
-* Misc Additions
-  1. [x] Dummy data loader (set to auto initialize data)
+  * [x] Add music button, opens add music form
+  * [x] Add music form, title, artist, album, file
+  * [x] Queue list, displays title, artist, album
+  * [x] Double-clicking in queue list plays selected song
+  * [x] When a song finishes playing, play next song in queue
+  * [x] Player status: current song title, artist, album, time elapsed, duration
+  * [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
+  * [x] Actually playing audio.
+  * [x] Simple UI theme in CSS.
+  * [x] Persistence using **REST API**.
+  * [x] Dummy data loader (set to auto initialize data)
+  * [ ] File upload
 
 ## Run the Project
 
