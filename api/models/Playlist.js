@@ -8,11 +8,8 @@
 module.exports = {
 
   attributes: {
-    title: { type: 'string' },
-    tracks: {
-      collection: 'Media',
-      via: 'parent',
-    }
+    title:    { type: 'string' },
+    tracks:   { collection: 'Media', via: 'parent' }
   }
 };
 

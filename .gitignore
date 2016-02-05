@@ -22,7 +22,8 @@
 *.swp
 *.tmp
 *.log
-assets/uploads
+./assets/uploads
+.uploads
 typings/*
 !typings/tsd.d.ts
 

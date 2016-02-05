@@ -4,7 +4,7 @@ import uploader     from '../modules/uploader';
 
 const validMusic = /\.mp[34]$/;
 
-function MediaUploader(playerUiService, $mdToast) {
+function MediaUploader(playerUiService, $timeout, $mdToast, $mdDialog) {
   return {
     template:   template,
     restrict:   'E',
@@ -12,6 +12,7 @@ function MediaUploader(playerUiService, $mdToast) {
     link: (scope, el, attrs) => {
       let fileEl = el.find('[type="file"]')[0];
       scope.submit        = submit;
+      scope.close         = close;
       scope.selectFile    = selectFile;
       scope.uploadPercent = 0;
       scope.$on('$destroy', destroy);
@@ -23,6 +24,9 @@ function MediaUploader(playerUiService, $mdToast) {
       // setup file input, drag+drop
       init();
 
+      function close() {
+        $mdDialog.hide();
+      }
       function selectFile() {
         console.log('MediaUploader.selectFile.fired', arguments);
         if (fileEl && fileEl.click) { fileEl.click() }
@@ -34,11 +38,19 @@ function MediaUploader(playerUiService, $mdToast) {
           return $mdToast.showSimple('Invalid file type selected');
         }
         // for click event, needs a file
-        uploader({'file': scope.file, 'media': scope.media, onProgress})
-        .catch(console.error.bind(console, 'Upload ERR:'))
+        uploader({'file': scope.file, 'media': scope.media, onProgress: _.throttle(onProgress, 500)})
+        .catch(err => {
+          scope.error = err && err.message;
+          console.error('Upload ERR:', err);
+          return null;
+        })
         .then(response => {
-          scope.file.done = true;
-          console.warn('Upload Results', response, this);
+          if (response) {
+            console.warn('RESPONSE', response);
+            scope.file.done = true;
+            $mdToast.showSimple('Successfully saved!');
+            $timeout(close, 1000);
+          }
         });
       }
       function onProgress(e) {

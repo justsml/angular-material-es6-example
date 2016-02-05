@@ -1,8 +1,19 @@
-div(layout)
-  md-button.md-accent(ng-click='selectFile()') Select File
-  input(type='file', accept='audio/*', style='display:none;')
-div(layout, layout-align='space-between')
+h3.md-warn(flex='100', ng-if='error') {{ error }}
+
+div(flex='80', ng-click='selectFile()')
+  div(flex, ng-if='!file || !file.name')
+    label.md-warn File Required, Click 'Select File'
   div(flex): b {{ file && file.name }}
-  div(flex): em Uploaded {{ uploadPercent }}%
-div(layout)
-  md-button.md-warn(ng-click='submit()') Save &amp; Upload
+  div(flex, ng-if='file && file.name')
+    b(ng-if='file.done'): md-icon.md-primary(style='color: #008000; font-size: 2em;') done
+    em Uploaded {{ uploadPercent }}%
+div(flex='20')
+  md-button.md-raised.md-accent(ng-click='selectFile()') Select File
+  input(type='file', accept='audio/*', style='display:none;')
+div(flex='100')
+  md-button.md-raised.md-warn(ng-click='close()')
+    md-icon clear
+    |Close
+  md-button.md-raised.md-primary(ng-click='submit()')
+    md-icon save
+    | Save &amp; Upload

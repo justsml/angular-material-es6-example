@@ -13,5 +13,9 @@ md-dialog(flex='80', aria-label='Create a Playlist')
             .my-message(ng-message='md-minlength')
               | Please enter a Playlist title
     md-dialog-actions()
-      md-button.md-raised.md-primary(ng-click='save(playlist)') Save
-      md-button.md-raised.md-warn(ng-click='close()') Close
+      md-button.md-raised.md-warn(ng-click='close()')
+        md-icon clear
+        | Close
+      md-button.md-raised.md-primary(ng-click='save(playlist)')
+        md-icon save
+        | Save

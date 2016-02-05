@@ -7,15 +7,14 @@
 
 module.exports = {
   attributes: {
-    title: { type: 'string' },
-    artist: { type: 'string' },
-    album: { type: 'string' },
-    imageUrl: { type: 'string' },
-    audioUrl: { type: 'string' },
-    sourceUrl: { type: 'string' },
-    parent: {
-      model: 'playlist'
-    }
+    title:        { type: 'string', unique: true },
+    artist:       { type: 'string' },
+    album:        { type: 'string' },
+    imageUrl:     { type: 'string' },
+    audioFile:    { type: 'string' },
+    audioUrl:     { type: 'string' },
+    sourceUrl:    { type: 'string' },
+    parent:       { collection: 'playlist', via: 'tracks' }
   }
 };
 

@@ -33,14 +33,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   // 'get /signup': { view: 'conversion/signup' },
-  // 'post /signup': 'AuthController.processSignup',
-  // 'get /login': { view: 'portal/login' },
-  // 'post /login': 'AuthController.processLogin',
   // '/logout': 'AuthController.logout',
-  // 'get /me': 'UserController.profile'
-  'get /playlist/:id/tracks': 'Playlist.tracks',
   // '/playlist/:id/addTrack': 'Playlist.addTrack',
-  // 'post /playlist/:id/track': 'Playlist.addTrack',
+  'get /media/uploads/:title': 'MediaController.download',
 
   '/': {
     view: 'index'

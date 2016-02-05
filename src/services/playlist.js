@@ -10,7 +10,7 @@ function PlaylistService($resource, $http, $mdToast, playerUiService) {
       return $http({method: 'GET', url: `${config.apiServerUrl}playlist/${playlist.id}/tracks/add/${media.id}`})
         .error($mdToast.showSimple)
         .success(data => {
-          return $mdToast.show($mdToast.simple().textContent(`Added ${media.title} to ${playlist.title}`).position('right top').hideDelay(5000));
+          return $mdToast.show($mdToast.simple().textContent(`Added ${media.title} to ${playlist.title}`).position('right bottom').hideDelay(5000));
         })
     },
     removeTrack: ({media, playlist}) => {
@@ -20,7 +20,7 @@ function PlaylistService($resource, $http, $mdToast, playerUiService) {
       return $http({method: 'GET', url: `${config.apiServerUrl}playlist/${playlist.id}/tracks/remove/${media.id}`})
         .error($mdToast.showSimple)
         .success(data => {
-          return $mdToast.show($mdToast.simple().textContent(`Removed ${media.title} from ${playlist.title}`).position('right top').hideDelay(3000));
+          return $mdToast.show($mdToast.simple().textContent(`Removed ${media.title} from ${playlist.title}`).position('right bottom').hideDelay(3000));
         })
     },
     get: (id = '') => {              return Playlist.get({id}).$promise },

@@ -1,17 +1,14 @@
-md-toolbar.md-accent()
-  .md-toolbar-tools
-    h2 {{ currentTitle() }}
-    span(flex)
-    md-button(ng-click='createMedia({}, playlist)')
-      md-icon(style='font-size: 2.5em;') queue
-      md-tooltip Add a Song
-div(layout-fill, layout, layout-align='center stretch')
-  section(flex='50')
-    md-subheader.md-warn(ng-if='!playlist', layout-align='center center')
-      h2 [No Playlist Selected]
-    md-subheader.md-primary(ng-if='playlist')
-      h2 {{ playlist.title }} Tracks
-    md-list(layout-margin, ng-if='playlist')
+div(layout, layout-margin, layout-fill, layout-align='center stretch')
+
+  section(flex='50', md-whiteframe='3')
+    md-toolbar.md-accent()
+      .md-toolbar-tools
+        h2(ng-if='!playlist') [No Playlist Selected]
+        h2(ng-if='playlist') {{ playlist.title }}
+
+    md-list(layout-margin, layout-padding, ng-if='playlist')
+      md-subheader.md-accent(ng-if='playlist && allPlaylistTracks.length === 0 && allTracks.length >= 1')
+        h2 [Playlist Empty. Select or Upload tracks.]
       md-list-item.md-accent.md-2-line(ng-repeat="item in allPlaylistTracks", ng-click='currentMedia(item)')
         md-icon.md-primary(ng-if='currentMedia() && currentMedia().id === item.id', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') play_circle_filled
         .md-list-item-text(layout='row', layout-wrap, layout-margin)
@@ -33,13 +30,17 @@ div(layout-fill, layout, layout-align='center stretch')
               md-tooltip Remove from {{playlist.title}}
         md-divider
 
-  section(flex='50', ng-if='allTracks')
-    md-subheader.md-accent(ng-if='playlist && allTracksRemaining() <= 0')
-       h4 All Media Added to The Current Playlist
-    md-subheader.md-accent(ng-if='allTracksRemaining() >= 1')
-      h2 All Music
-      span(flex)
+  section(flex='50', md-whiteframe='3', ng-if='allTracks')
+    md-toolbar.md-accent()
+      .md-toolbar-tools
+        h2 All Media
+        span(flex)
+        md-button(ng-click='createMedia({}, playlist)')
+          md-icon(style='font-size: 2.5em;') queue
+          md-tooltip Add/Upload a Song
     md-list(layout-margin, ng-if='allTracksRemaining() >= 1')
+      md-subheader.md-accent(ng-if='playlist && allTracksRemaining() <= 0')
+        h4 All Media Added to The Current Playlist
       md-list-item(ng-repeat="item in allTracks", ng-if='!inPlaylist(item, playlist)', md-clickable)
         md-button(ng-if='playlist', ng-click='addRemoveTrack(item, playlist)')
           //- md-icon(ng-if='inPlaylist(item, playlist)', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') add_circle

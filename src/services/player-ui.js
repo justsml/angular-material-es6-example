@@ -20,7 +20,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
     playerCtx = new Audio5js({
       swf_path:'/assets/audio5js.swf',
       codecs:         ['mp3'],
-      throw_errors:   true,
+      throw_errors:   false,
       format_time:    false,
       ready: function() {
         console.log('Audio.ready (init)', media);
@@ -28,7 +28,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         this.load(media.audioUrl);
         this.play();
         this.one('canplay', () => {
-          console.log('Audio.canplay', this);
+
           playerCtx = this;
           audioReady = true;
         });
@@ -47,7 +47,10 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
         this.on('loadedmetadata', () => { console.log('Audio.loadedmetadata', arguments, this) }, this);
 
         this.on('error', (err) => {
-          $mdToast.showSimple('Error Loading Media');
+          $mdToast.show($mdToast.simple()
+            .textContent('Error Loading Media, Upload again')
+            .position('left bottom')
+            .hideDelay(12000));
           console.error('Audio5 Error', err);
         }, this);
       }
@@ -106,7 +109,7 @@ function PlayerUiService($rootScope, $mdToast, $mdDialog) {
       return svc.currentMedia(tracks[curIndex]);
     },
     playlistDialog: (playlist = null) => {
-      dialogPromise = $mdDialog.show({
+       dialogPromise = $mdDialog.show({
         template:             playlistTemplate(),
         locals:               { 'playlist': playlist },
         clickOutsideToClose:  true,

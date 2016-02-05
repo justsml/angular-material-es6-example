@@ -3,7 +3,7 @@
     md-icon arrow_drop_down
     | Choose a Playlist
     md-icon arrow_drop_down
-md-list.playlists(layout-fill, layout-align)
+md-list.playlists(layout-align)
   md-list-item.md-warn(ng-if='!results || results.length < 1', ng-click='create()')
     .md-list-item-text(layout='row', layout-margin)
       h3.title(): em Add a Playlist
@@ -11,6 +11,7 @@ md-list.playlists(layout-fill, layout-align)
   md-list-item.md-1-line(ng-repeat="item in results", layout='row', ng-click='select(item)')
     md-divider
     .md-list-item-text(layout-margin)
+      .md-primary.badge {{ tracks.length }}
       h3.title
         | {{ item.title }}
       md-icon.md-secondary(ng-if='!currentPlaylist() && currentPlaylist().id !== item.id', ng-style='{"font-size": "1.8em", margin: "0 .35em"}') playlist_play

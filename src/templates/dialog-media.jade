@@ -1,31 +1,26 @@
-md-dialog(flex='auto', aria-label='{{ title }}')
-  form(name='frm')
-    md-toolbar.md-accent
-      .md-toolbar-tools
-        h2(ng-if='media && media.id') Edit {{ media.title }}
-        h2(ng-if='!media || !media.id') Add New Media
-    md-dialog-content(layout, layout-padding)
-      div(layout)
-        md-input-container.md-block(flex='33')
-          label Title
-          input(type='text', ng-model='media.title')
-        md-input-container.md-block(flex='33')
-          label Album
-          input(type='text', ng-model='media.album')
-        md-input-container.md-block(flex='33')
-          label Artist
-          input(type='text', ng-model='media.artist')
-      div(layout-fill, flex='auto')
+md-dialog(aria-label='{{ title }}')
+  md-toolbar.md-accent
+    .md-toolbar-tools
+      h2(ng-if='media && media.id') Edit {{ media.title }}
+      h2(ng-if='!media || !media.id') Add New Media
+  md-dialog-content(ng-form='frm')
+    div(layout, layout-wrap, layout-padding)
+      md-input-container.md-block(flex='33')
+        label Title*
+        input(type='text', name='title', ng-model='media.title', required, ng-minlength='3')
+        div(ng-messages='frm.title.$error', role='alert')
+          .my-message(ng-message='required') You must enter a title.
+          .my-message(ng-message='md-minlength') Title must be longer than 3 chars.
+      md-input-container.md-block(flex='33')
+        label Album
+        input(type='text', ng-model='media.album')
+      md-input-container.md-block(flex='33')
+        label Artist
+        input(type='text', ng-model='media.artist')
+      //-div(layout, flex='auto')
         md-input-container.md-block()
           label Media URL:
           input(type='text', name='audioUrl', ng-model='media.audioUrl', placeholder='mp3/ogg path', required, ng-pattern='/\.(mp3|ogg)$/', md-minlength='9')
-          div(ng-messages='frm.audioUrl.$error', role='alert')
-            .my-message(ng-message='required') You must supply a url.
-            .my-message(ng-message='pattern')
-              | That doesn't look like a valid url
-            .my-message(ng-message='md-minlength')
-              | Only .MP3 &amp; .OGG files supported
-    md-dialog-actions()
-      media-uploader(media='media', layout)
+    md-dialog-actions(style='text-align: right;')
+      media-uploader(media='media', layout, layout-padding, layout-wrap, layout-align='end space-between')
       //-md-button.md-raised.md-primary(ng-click='save(media)') Save
-      md-button.md-raised.md-warn(ng-click='close()') Close

@@ -1,9 +1,8 @@
 md-toolbar
   .md-toolbar-tools
     md-icon library_music
-    h2
-      span Music Player
-
+    h1: span Music Player
     span(flex='')
-    md-button.md-icon-button(aria-label='More')
-      md-icon() more_vert
+    md-button.md-icon-button(aria-label='More', target='_blank', ng-href='http://www.danlevy.net/')
+      md-icon() info
+      md-tooltip Visit Dan Levy's Blog
