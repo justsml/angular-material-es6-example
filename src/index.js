@@ -5,6 +5,7 @@ import themeConfig        from './modules/theme-config'
 import appController      from './controllers/app'
 
 import playlistMenu       from './directives/playlist-menu'
+import mediaUploader      from './directives/media-uploader'
 import mediaList          from './directives/media-list'
 import mediaControls      from './directives/media-controls'
 import navToolbar         from './directives/nav-toolbar'
@@ -26,8 +27,9 @@ app.config(themeConfig)
   .factory('sampleDataService',   sampleDataService)
 
   .directive('playlistMenu',      playlistMenu)
-  .directive('mediaList',         mediaList)
+  .directive('mediaUploader',     mediaUploader)
   .directive('mediaControls',     mediaControls)
+  .directive('mediaList',         mediaList)
   .directive('navToolbar',        navToolbar)
   .directive('sidenav',           sidenav)
 

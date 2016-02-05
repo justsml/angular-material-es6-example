@@ -1,0 +1,8 @@
+div(layout)
+  md-button.md-accent(ng-click='selectFile()') Select File
+  input(type='file', accept='audio/*', style='display:none;')
+div(layout, layout-align='space-between')
+  div(flex): b {{ file && file.name }}
+  div(flex): em Uploaded {{ uploadPercent }}%
+div(layout)
+  md-button.md-warn(ng-click='submit()') Save &amp; Upload

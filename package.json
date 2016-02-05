@@ -9,8 +9,8 @@
     "watch": "gulp watch",
     "test": "mocha test",
     "start": "nodemon app",
-    "docker-build":   "docker build -t jsbeats .",
-    "docker-run":     "docker run --name jsbeats --detach --rm -p 8080:1337 jsbeats",
+    "docker-build": "docker build -t jsbeats .",
+    "docker-run": "docker run --name jsbeats --detach --rm -p 8080:1337 jsbeats",
     "docker-run-dev": "docker run --name jsbeats --rm -p 8080:1337 -v $PWD:/app jsbeats"
   },
   "author": "Dan Levy <Dan@DanLevy.net>",
@@ -58,6 +58,7 @@
     "lodash": "^4.1.0",
     "material-design-lite": "github:google/material-design-lite",
     "mocha": "^2.4.5",
+    "multer": "^1.1.0",
     "nodemon": "^1.8.1",
     "rc": "~0.5.0",
     "sails": "^0.11.4",

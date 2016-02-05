@@ -26,5 +26,6 @@ md-dialog(flex='auto', aria-label='{{ title }}')
             .my-message(ng-message='md-minlength')
               | Only .MP3 &amp; .OGG files supported
     md-dialog-actions()
-      md-button.md-raised.md-primary(ng-click='save(media)') Save
+      media-uploader(media='media', layout)
+      //-md-button.md-raised.md-primary(ng-click='save(media)') Save
       md-button.md-raised.md-warn(ng-click='close()') Close
