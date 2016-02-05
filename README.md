@@ -4,27 +4,43 @@
 
 ![jsbeats-split-screen-playlist](https://raw.githubusercontent.com/justsml/angular-material-es6-example/master/assets/images/jsbeats-split-screen-playlist.png)
 
+## Technology
 
-## Requirements:
+In no particular order:
 
-  * [x] Add music button, opens add music form
-  * [x] Add music form, title, artist, album, file
-  * [x] Queue list, displays title, artist, album
-  * [x] Double-clicking in queue list plays selected song
-  * [x] When a song finishes playing, play next song in queue
-  * [x] Player status: current song title, artist, album, time elapsed, duration
-  * [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
-  * [x] Actually playing audio.
-  * [x] Simple UI theme in CSS.
-  * [x] Persistence using **REST API**.
-  * [x] Dummy data loader (set to auto initialize data)
-  * [ ] File upload
+* NodeJS
+* ES6/ES2015
+* Babel - (es2015 & stage0 plugins)
+* Angular v1.x
+* Express JS
+* Sails.js (REST API)
+* Browserify
+* Angular Material (Google's Material Design)
+* Gulp
+* Jade/Jadeify
+
+## Features
+
+* [x] File upload
+* [x] Add music button, opens add music form
+* [x] Add music form, title, artist, album, file
+* [x] Queue list, displays title, artist, album
+* [x] Double-clicking in queue list plays selected song
+* [x] When a song finishes playing, play next song in queue
+* [x] Player status: current song title, artist, album, time elapsed, duration
+* [x] Player interface: play, stop, previous, next, scrubber bar, should all actually function.
+* [x] Actually playing audio.
+* [x] Simple UI theme in CSS.
+* [x] Persistence using **REST API**.
+* [x] Dummy data loader (set to auto initialize data)
 
 ## Run the Project
 
 > Develped & Tested on Debian 8
 
 ```sh
+git clone https://github.com/justsml/angular-material-es6-example.git
+cd angular-material-es6-example
 npm install
 npm start
 ```
@@ -43,13 +59,13 @@ npm run docker-run-dev
 ## Schemas
 
 * Media
-    1. `Title`
-    1. `Artist`
-    1. `Album`
-    1. `AudioUrl`
+  * `Title`
+  * `Artist`
+  * `Album`
+  * `AudioUrl`
 * Playlist
-    1. `Title`
-    1. `Tracks[Media]`
+  * `Title`
+  * `Tracks[Media]`
 
 ## CREDIT & REFERENCES
 
