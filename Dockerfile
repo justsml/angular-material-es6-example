@@ -3,6 +3,7 @@ MAINTAINER Dan Levy <Dan@DanLevy.net>
 RUN mkdir /app
 COPY . /app
 WORKDIR /app
-RUN npm i -g nodemon
+RUN npm i -g nodemon gulp
+RUN gulp build
 ENTRYPOINT ["npm", "start"]
 
