@@ -1,4 +1,4 @@
-# jsbeats - Music Player Project
+# jsbeats - Music Player Demo Project
 
 ## Preview
 
@@ -44,6 +44,8 @@ npm run build
 npm start
 ```
 
+> Then visit: [http://localhost:1337/](http://localhost:1337/)
+
 ## Run with Docker
 
 ```sh
@@ -53,11 +55,9 @@ npm run docker-run
 # Or to mount the local dev folder for live updating (no `docker build` needed for every change)
 npm run docker-run-dev
 
-
 ```
 
 > Then visit: [http://localhost:1337/](http://localhost:1337/)
-
 
 
 ## Schemas
@@ -78,10 +78,9 @@ npm run docker-run-dev
 * [ES6 Module Info](http://www.2ality.com/2014/09/es6-modules-final.html)
 * [REST API built using SailsJS](https://www.smashingmagazine.com/2015/11/sailing-sails-js-mvc-style-framework-node-js/)
 
-### Sample MP3 Files - Credit
+### Sample MP3 Files - Credits
 
-* https://soundcloud.com/trapmusic/fuzzy-peach-by-brillz-minxx
-* https://soundcloud.com/trapmusic/hydraulix-oski-lets-play
-* https://soundcloud.com/dubpolice/subscape-shanghai
-
+* [https://soundcloud.com/trapmusic/fuzzy-peach-by-brillz-minxx](https://soundcloud.com/trapmusic/fuzzy-peach-by-brillz-minxx)
+* [https://soundcloud.com/trapmusic/hydraulix-oski-lets-play](https://soundcloud.com/trapmusic/hydraulix-oski-lets-play)
+* [https://soundcloud.com/dubpolice/subscape-shanghai](https://soundcloud.com/dubpolice/subscape-shanghai)
 
