@@ -10,8 +10,8 @@
     "test": "mocha test",
     "start": "nodemon app",
     "docker-build": "docker build -t jsbeats .",
-    "docker-run": "docker run --name jsbeats --detach --rm -p 8080:1337 jsbeats",
-    "docker-run-dev": "docker run --name jsbeats --rm -p 8080:1337 -v $PWD:/app jsbeats"
+    "docker-run": "docker run --name jsbeats --detach -p 1337:1337 jsbeats",
+    "docker-run-dev": "docker run --name jsbeats --rm -p 1337:1337 -v $PWD:/app jsbeats"
   },
   "author": "Dan Levy <Dan@DanLevy.net>",
   "license": "MIT",

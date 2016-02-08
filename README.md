@@ -54,7 +54,11 @@ npm run docker-run
 # Or to mount the local dev folder for live updating (no `docker build` needed for every change)
 npm run docker-run-dev
 
+
 ```
+
+#### Then visit: http://localhost:1337/
+
 
 ## Schemas
 
