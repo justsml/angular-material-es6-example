@@ -1,7 +1,7 @@
 {
   "name": "jsbeats",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "description": "Example Music Player App feat. Sails.js, ES6, Angular (v1.x), Jade, Gulp, Browserify, Babel, and Material Design",
   "main": "app.js",
   "scripts": {
     "debug": "DEBUG=* nodemon app.js",

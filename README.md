@@ -6,25 +6,23 @@
 
 ## Technology
 
-In no particular order:
-
-* NodeJS
-* ES6/ES2015
-* Babel - (es2015 & stage0 plugins)
-* Angular v1.x
-* Express JS
-* Sails.js (REST API)
-* Browserify
-* Angular Material (Google's Material Design)
-* Gulp
-* Jade/Jadeify
+* [NodeJS](https://nodejs.org/)
+* [ES6/ES2015](http://www.2ality.com/2014/09/es6-modules-final.html)
+* [Babel](http://babeljs.io/) - [es2015](http://babeljs.io/docs/plugins/preset-es2015/) & [stage0](http://babeljs.io/docs/plugins/preset-stage-0/) plugins
+* [Angular v1.x](https://docs.angularjs.org/guide)
+* [Express JS](http://expressjs.com/en/4x/api.html)
+* [Sails.js](http://sailsjs.org/documentation/reference/) (REST API)
+* [Browserify](http://browserify.org/)
+* [Angular Material](https://material.angularjs.org/) (Google's Material Design)
+* [Gulp](https://github.com/gulpjs/gulp)
+* [Jade](http://jade-lang.com/) - [Jadeify](https://github.com/domenic/jadeify)
+* [Audio5](https://github.com/zohararad/audio5js)
 
 ## Features
 
-* [x] File upload
-* [x] Add music button, opens add music form
+* [x] File upload [sailsjs details](http://sailsjs.org/documentation/reference/request-req/req-file)
 * [x] Add music form, title, artist, album, file
-* [x] Queue list, displays title, artist, album
+* [x] Queue/playlist, displays title, artist, album
 * [x] Double-clicking in queue list plays selected song
 * [x] When a song finishes playing, play next song in queue
 * [x] Player status: current song title, artist, album, time elapsed, duration
@@ -42,6 +40,7 @@ In no particular order:
 git clone https://github.com/justsml/angular-material-es6-example.git
 cd angular-material-es6-example
 npm install
+npm run build
 npm start
 ```
 
@@ -57,7 +56,8 @@ npm run docker-run-dev
 
 ```
 
-#### Then visit: http://localhost:1337/
+> Then visit: [http://localhost:1337/](http://localhost:1337/)
+
 
 
 ## Schemas
