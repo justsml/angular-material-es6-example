@@ -1,6 +1,6 @@
 # jsbeats - Music Player Demo Project
 
-## Preview
+## Screenshot
 
 ![jsbeats-split-screen-playlist](https://raw.githubusercontent.com/justsml/angular-material-es6-example/master/assets/images/jsbeats-split-screen-playlist.png)
 
