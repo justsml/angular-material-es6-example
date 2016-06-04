@@ -18,6 +18,8 @@
 * [Jade](http://jade-lang.com/) - [Jadeify](https://github.com/domenic/jadeify)
 * [Audio5](https://github.com/zohararad/audio5js)
 
+> Note: React version in the works. Angular v2 after that.
+
 ## Features
 
 * [x] File upload [sailsjs details](http://sailsjs.org/documentation/reference/request-req/req-file)
